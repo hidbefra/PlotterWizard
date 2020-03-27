@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>870</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton_Stop">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>770</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Stop</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Start">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>770</y>
+      <width>111</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QTreeWidget" name="treeWidget_Produktion">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>256</width>
+      <height>701</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>Setups</string>
+     </property>
+    </column>
+    <item>
+     <property name="text">
+      <string>CV31</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>2K</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Schweissen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Lochen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Schneiden</string>
+       </property>
+      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>1K</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Schweissen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Lochen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>schneiden</string>
+       </property>
+      </item>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>VC95</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>2K</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Schweissen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Lochen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Schneiden</string>
+       </property>
+      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>1K</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Schweissen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Lochen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Schneien</string>
+       </property>
+      </item>
+     </item>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="pushButton_hoch">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>270</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>hoch</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_runter">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>300</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>runter </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Schablone_hinzufgen">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>130</y>
+      <width>171</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>add Schablone</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Arbeitschrit_Delete">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>330</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_edit">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>240</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>edit</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_Statu_Meldung">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>680</y>
+      <width>461</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;eine Kerbe einlegen&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Prozess_hinzufgen">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>160</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>add Prozess</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Arbeitsschritt_hinzufgen">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>190</y>
+      <width>111</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>add Arbeitsschritt</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_config_Name">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>20</y>
+      <width>681</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;CV 95 A2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menutest">
+    <property name="title">
+     <string>Setup</string>
+    </property>
+    <addaction name="actionserial_communication"/>
+   </widget>
+   <widget class="QMenu" name="menuDatei">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSpeichern"/>
+   </widget>
+   <addaction name="menuDatei"/>
+   <addaction name="menutest"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionserial_communication">
+   <property name="text">
+    <string>serial communication</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSpeichern">
+   <property name="text">
+    <string>Speichern</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

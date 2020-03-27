@@ -175,7 +175,7 @@
     <rect>
      <x>210</x>
      <y>140</y>
-     <width>42</width>
+     <width>111</width>
      <height>22</height>
     </rect>
    </property>
@@ -203,7 +203,7 @@
     <string>PB2 Vacuum</string>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QRadioButton" name="radioButton_PB4">
@@ -234,6 +234,16 @@
      <height>22</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>Unten</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Oben</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_11">
    <property name="geometry">

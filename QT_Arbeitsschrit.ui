@@ -104,8 +104,8 @@
   <widget class="QPushButton" name="pushButton_Geometrie_anpassen">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>490</y>
+     <x>40</x>
+     <y>480</y>
      <width>131</width>
      <height>23</height>
     </rect>
@@ -137,25 +137,6 @@
     <string>Geometrie</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_Globale_anpasung">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>490</y>
-     <width>231</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>globale Geometrieanpasung übernehmen</string>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="autoExclusive">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_Laden">
    <property name="geometry">
     <rect>
@@ -180,25 +161,6 @@
    </property>
    <property name="text">
     <string>exportieren</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radioButton_Globale_anpasung_2">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>520</y>
-     <width>231</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>als globale Geometrieanpasung setzten</string>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="autoExclusive">
-    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
