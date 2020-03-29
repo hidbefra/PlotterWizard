@@ -1,12 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os #Used in Testing Script
 
-os.system("\"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts\pyuic5.exe\" -x -o QT_Schablone.py QT_Schablone.ui") # gui übersetzten
-
-
-
-import sys
 import QT_Schablone as mw
+import Schablone
 
 
 
@@ -18,5 +13,6 @@ class gui_Schablone:
         self.ui.setupUi(self.Dialog)
 
 
-    def show(self):
+    def show(self, schablone: Schablone.Schablone):
+        self.ui.lineEdit_Bezeichung.setText(schablone.Name)
         self.Dialog.show()

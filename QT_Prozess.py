@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'QT_Prozess.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -53,7 +53,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Prozuess"))
         self.label_2.setText(_translate("Dialog", "Bezeichnung"))
         self.label_3.setText(_translate("Dialog", "Offset X [mm]"))
         self.label_4.setText(_translate("Dialog", "Offset Y [mm]"))

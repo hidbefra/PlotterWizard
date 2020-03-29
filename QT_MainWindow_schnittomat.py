@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'QT_MainWindow_schnittomat.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -30,6 +30,7 @@ class Ui_MainWindow(object):
         self.pushButton_Start.setObjectName("pushButton_Start")
         self.treeWidget_Produktion = QtWidgets.QTreeWidget(self.centralwidget)
         self.treeWidget_Produktion.setGeometry(QtCore.QRect(10, 120, 256, 701))
+        self.treeWidget_Produktion.setExpandsOnDoubleClick(False)
         self.treeWidget_Produktion.setObjectName("treeWidget_Produktion")
         item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget_Produktion)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
@@ -113,7 +114,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "SchnittOmat"))
         self.pushButton_Stop.setText(_translate("MainWindow", "Stop"))
         self.pushButton_Start.setText(_translate("MainWindow", "Start"))
         self.treeWidget_Produktion.headerItem().setText(0, _translate("MainWindow", "Setups"))

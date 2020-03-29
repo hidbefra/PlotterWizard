@@ -1,14 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os #Used in Testing Script
 
-os.system("\"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts\pyuic5.exe\" -x -o QT_Arbeitsschrit.py QT_Arbeitsschrit.ui") # gui übersetzten
-
-
-
-import sys
-import QT_Arbeitsschrit as mw
+import QT_Arbeitsschritt as mw
 import gui_Schnittparameter
-
+import Arbeitsschritt
 
 
 class gui_Arbeitsschrit:
@@ -23,7 +17,8 @@ class gui_Arbeitsschrit:
         self.schnittparameter = gui_Schnittparameter.gui_Schnittparameter()
 
 
-    def show(self):
+    def show(self, arbeitsschrit: Arbeitsschritt.Arbeitsschritt):
+        self.ui.lineEdit_bezeichung.setText(arbeitsschrit.Name)
         self.Dialog.show()
 
     def pushButton_Schnittparameter(self):

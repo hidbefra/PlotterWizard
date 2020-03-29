@@ -1,11 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os #Used in Testing Script
-
-os.system("\"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python36_64\Scripts\pyuic5.exe\" -x -o QT_Prozess.py QT_Prozess.ui") # gui übersetzten
+import Prozess
 
 
-
-import sys
 import QT_Prozess as mw
 
 
@@ -18,5 +14,6 @@ class gui_Prozess:
         self.ui.setupUi(self.Dialog)
 
 
-    def show(self):
+    def show(self, prozess: Prozess.Prozess):
+        self.ui.lineEdit_bezeichung.setText(prozess.Name)
         self.Dialog.show()

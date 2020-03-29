@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SchnittOmat</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton_Stop">
@@ -58,6 +58,9 @@
       <width>256</width>
       <height>701</height>
      </rect>
+    </property>
+    <property name="expandsOnDoubleClick">
+     <bool>false</bool>
     </property>
     <column>
      <property name="text">

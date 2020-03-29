@@ -1,12 +1,31 @@
 import numpy as np
-from scipy import interpolate
+from scipy import interpolate #install scipy
 import cv2
 import math
-import random
 
 
-height = 1000
-width = 1000
+quadrat = np.array(
+    [
+    [0,60],
+    [30,60],
+    [60,60],
+    [60,30],
+    [60,0],
+    [60,-30],
+    [60,-60],
+    [30,-60],
+    [0,-60],
+    [-30,-60],
+    [-60,-60],
+    [-60,-30],
+    [-60,0],
+    [-60,30],
+    [-60,60],
+    [-30,60]
+])*3
+
+height = 800
+width = 800
 
 dot_grid = []
 
@@ -14,8 +33,8 @@ dot_grid = []
 image = np.zeros((height, width,3), np.uint8)
 
 # bild erstellen
-r = 300
-px = 50
+r = 200
+px = len(quadrat)*5
 for i in range(px):
     w = math.pi *2/px*i
     x=int(math.cos(w)*r+width/2)
@@ -45,32 +64,35 @@ values_x = []
 values_y = []
 
 # äusere Begrenzung erstellen
-begrenzung = height*2**(1/2)*0.5*0.9
-for i in range(100):
-    w = math.pi * 2 / 100*i+math.pi/4
-    x = math.cos(w)*begrenzung+width/2
-    y = math.sin(w)*begrenzung+height/2
+n=32
+for i in range(n):
+    rb = 400
+    w = math.pi *2/n*i+math.pi/4
+    x = int(math.cos(w)*rb+width/2)
+    y = int(math.sin(w)*rb+height/2)
     points.append([x,y])
-    image = cv2.circle(image, (int(x), int(y)), 2, (0, 255, 255), -1)
     values_x.append(0)
     values_y.append(0)
-
+    image = cv2.circle(image, (x, y), 2, (0, 255, 255), -1)
 
 # stützpunkte erstellen
-for i in range(int(px/10)):
-    w = math.pi *2/int(px/10)*i
-    x = math.cos(w)*r+width/2
-    y = math.sin(w)*r+height/2
+n = len(quadrat)
+for i in range(int(n)):
+    w = (math.pi/2-math.pi *2 / int(n)*(i))
+    x = int(math.cos(w)*r+width/2)
+    y = int(math.sin(w)*r+height/2)
+    nx = int(quadrat[i][0]+width/2)
+    ny = int(quadrat[i][1]+width/2)
     points.append([x,y])
-    image = cv2.circle(image, (int(x), int(y)), 5, (255, 255, 255), -1)
+    image = cv2.circle(image, (x, y), 5, (255, 255, 255), -1)
 
-    dx = (0.5 - random.random()) * 100
-    dy = (0.5 - random.random()) * 100
+    dx = nx-x
+    dy = ny-y
 
     values_x.append(dx)
     values_y.append(dy)
 
-    image = cv2.circle(image, (int(x + dx), int(y + dy)), 5, (0, 0, 255), -1)
+    image = cv2.circle(image, (x + dx, y + dy), 5, (0, 0, 255), -1)
 
 # für x und y verzerungsproviel lösen
 grid_zx = interpolate.griddata(points, values_x, (grid_x, grid_y), method='cubic')
@@ -87,6 +109,5 @@ for pnt in dot_grid:
     print(dx)
     image = cv2.circle(image, (x + dx, y + dy), 1, (0, 0, 255), -1)
 
-cv2.imwrite('test.png', image)
 cv2.imshow("", image)
 cv2.waitKey(0)

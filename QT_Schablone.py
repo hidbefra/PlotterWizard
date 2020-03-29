@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'QT_Schablone.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(595, 574)
+        Dialog.resize(595, 563)
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(230, 530, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -71,7 +71,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Schablone"))
         self.label.setText(_translate("Dialog", "Bezeichung"))
         self.label_6.setText(_translate("Dialog", "Offset X [mm]"))
         self.label_7.setText(_translate("Dialog", "Rotation [°]"))
