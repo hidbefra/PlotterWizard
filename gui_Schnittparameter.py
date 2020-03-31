@@ -15,3 +15,4 @@ class gui_Schnittparameter:
 
     def show(self):
         self.Dialog.show()
+        self.Dialog.exec()

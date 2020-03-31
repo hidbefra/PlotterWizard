@@ -3,3 +3,4 @@
 # install PyQt5-tool
 # install scipy
 # install pyserial
+# install pyinstaller

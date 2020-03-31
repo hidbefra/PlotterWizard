@@ -11,6 +11,8 @@ def ui_translate():
 
     os.system(pfad + " -x -o QT_Schablone.py QT_Schablone.ui") # gui übersetzten
 
+    os.system(pfad + " -x -o QT_Setups.py QT_Setups.ui")  # gui übersetzten
+
 
 if __name__ == "__main__":
     print("translate ui to py")
