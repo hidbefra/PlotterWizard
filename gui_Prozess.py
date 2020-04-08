@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import Prozess
+import model_Prozess
 
 
 import QT_Prozess as mw
@@ -12,14 +12,14 @@ class gui_Prozess:
         self.Dialog = QtWidgets.QDialog()
         self.ui = mw.Ui_Dialog()
         self.ui.setupUi(self.Dialog)
-        self.prozess: Prozess.Prozess = None
+        self.prozess: model_Prozess.Prozess = None
 
         self.ui.buttonBox.accepted.connect(self.accepted)
         self.ui.buttonBox.rejected.connect(self.rejected)
 
 
-    def show(self, prozess: Prozess.Prozess):
-        self.ui.lineEdit_bezeichung.setText(prozess.Name)
+    def show(self, prozess: model_Prozess.Prozess):
+        self.ui.lineEdit_bezeichung.setText(prozess.name)
         self.prozess = prozess
 
         self.Dialog.show()
@@ -27,7 +27,7 @@ class gui_Prozess:
 
 
     def accepted(self):
-        self.prozess.Name = self.ui.lineEdit_bezeichung.text()
+        self.prozess.name = self.ui.lineEdit_bezeichung.text()
 
     def rejected(self):
         pass

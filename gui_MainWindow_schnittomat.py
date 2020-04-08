@@ -9,10 +9,10 @@ import gui_Setups
 
 import my_QTreeWidgetItem
 
-import Setups
-import Schablone
-import Prozess
-import Arbeitsschritt
+import model_Setups
+import model_Schablone
+import model_Prozess
+import model_Arbeitsschritt
 
 import QT_MainWindow_schnittomat as mw
 
@@ -54,18 +54,20 @@ class gui_MainWindow_schnittomat:
 
         # item = my_QTreeWidgetItem.my_QTreeWidgetItem(self.ui.treeWidget_Produktion)
 
-        self.Setups = Setups.Setups(self.ui.treeWidget_Produktion) # erstellen des Models
+        self.Setups = model_Setups.Setups(self.ui.treeWidget_Produktion) # erstellen des Models
         self.update_TreeWidget()
+
+        print(self.Setups.__dict__)
 
     def update_TreeWidget(self):
 
         self.ui.treeWidget_Produktion.clear()
 
-        self.ui.treeWidget_Produktion.headerItem().setText(0, self.Setups.Name)
+        self.ui.treeWidget_Produktion.headerItem().setText(0, self.Setups.name)
 
         for schablone in self.Setups.Schablonen:
             item = my_QTreeWidgetItem.my_QTreeWidgetItem(self.ui.treeWidget_Produktion)
-            item.setText(0, schablone.Name)
+            item.setText(0, schablone.name)
             item.setFlags(item.flags() | QtCore.Qt.ItemIsTristate | QtCore.Qt.ItemIsUserCheckable)
             item.setCheckState(0, schablone.enabled)
             item.modul = schablone
@@ -73,7 +75,7 @@ class gui_MainWindow_schnittomat:
 
             for prozzess in schablone.Prozesse:
                 item2 = my_QTreeWidgetItem.my_QTreeWidgetItem(item)
-                item2.setText(0, prozzess.Name)
+                item2.setText(0, prozzess.name)
                 item2.setFlags(item2.flags() | QtCore.Qt.ItemIsTristate| QtCore.Qt.ItemIsUserCheckable)
                 item2.setCheckState(0, prozzess.enabled)
                 item2.modul = prozzess
@@ -81,7 +83,7 @@ class gui_MainWindow_schnittomat:
 
                 for arbeitsscritt in prozzess.Arbeitsschritte:
                     item3 = my_QTreeWidgetItem.my_QTreeWidgetItem(item)
-                    item3.setText(0, arbeitsscritt.Name)
+                    item3.setText(0, arbeitsscritt.name)
                     item3.setFlags(item3.flags() | QtCore.Qt.ItemIsUserCheckable)
                     item3.setCheckState(0, arbeitsscritt.enabled)
                     item3.modul = arbeitsscritt
@@ -118,17 +120,17 @@ class gui_MainWindow_schnittomat:
         self.edit_modul(None)
 
     def edit_modul(self, modul):
-        if type(modul) is Schablone.Schablone:
+        if type(modul) is model_Schablone.Schablone:
             print("EditContent für SChablone")
             self.guiSchablone.show(modul)
 
-        if type(modul) is Prozess.Prozess:
+        if type(modul) is model_Prozess.Prozess:
             print("EditContent für Prozess")
             self.guiProzess.show(modul)
 
-        if type(modul) is Arbeitsschritt.Arbeitsschritt:
+        if type(modul) is model_Arbeitsschritt.Arbeitsschritt:
             print("EditContent für Arbeitsschritt")
-            self.guiArbeitsschritt.show(modul)
+            modul = self.guiArbeitsschritt.show(modul)
 
         if modul is None:
             print("EditContent für Setup")
@@ -138,36 +140,36 @@ class gui_MainWindow_schnittomat:
 
     def add_modul(self, modul):
         print(modul)
-        if type(modul) is Schablone.Schablone:
-            md: Schablone.Schablone = modul
-            md.Prozesse.append(Prozess.Prozess(md))
+        if type(modul) is model_Schablone.Schablone:
+            md: model_Schablone.Schablone = modul
+            md.Prozesse.append(model_Prozess.Prozess(md))
             print("EditContent für SChablone")
 
-        if type(modul) is Prozess.Prozess:
+        if type(modul) is model_Prozess.Prozess:
             print("EditContent für Prozess")
-            md: Prozess.Prozess = modul
-            md.Arbeitsschritte.append(Arbeitsschritt.Arbeitsschritt(md))
+            md: model_Prozess.Prozess = modul
+            md.Arbeitsschritte.append(model_Arbeitsschritt.Arbeitsschritt(parent=md))
 
         if modul is None:
             print("EditContent für Setup")
-            self.Setups.Schablonen.append(Schablone.Schablone())
+            self.Setups.Schablonen.append(model_Schablone.Schablone())
 
         self.update_TreeWidget()
 
     def delete_modul(self, modul):
-        if type(modul) is Schablone.Schablone:
-            md: Schablone.Schablone = modul
-            print("delete " + md.Name)
+        if type(modul) is model_Schablone.Schablone:
+            md: model_Schablone.Schablone = modul
+            print("delete " + md.name)
             self.Setups.Schablonen.remove(md)
 
-        if type(modul) is Prozess.Prozess:
-            md: Prozess.Prozess = modul
-            print("delete " + md.Name)
+        if type(modul) is model_Prozess.Prozess:
+            md: model_Prozess.Prozess = modul
+            print("delete " + md.name)
             md.parent.Prozesse.remove(md)
 
-        if type(modul) is Arbeitsschritt.Arbeitsschritt:
-            md: Arbeitsschritt.Arbeitsschritt = modul
-            print("delete " + md.Name)
+        if type(modul) is model_Arbeitsschritt.Arbeitsschritt:
+            md: model_Arbeitsschritt.Arbeitsschritt = modul
+            print("delete " + md.name)
             md.parent.Arbeitsschritte.remove(md)
 
         self.update_TreeWidget()

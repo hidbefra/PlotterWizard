@@ -13,6 +13,8 @@ def ui_translate():
 
     os.system(pfad + " -x -o QT_Setups.py QT_Setups.ui")  # gui übersetzten
 
+    os.system(pfad + " -x -o QT_Schnittparameter.py QT_Schnittparameter.ui")
+
 
 if __name__ == "__main__":
     print("translate ui to py")
