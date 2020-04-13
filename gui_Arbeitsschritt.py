@@ -4,16 +4,23 @@ import QT_Arbeitsschritt as mw
 import gui_Schnittparameter
 import model_Arbeitsschritt
 import my_Json
+from file_handling import FileHandling
+
+import copy
 
 
-class gui_Arbeitsschrit:
+class gui_Arbeitsschrit(FileHandling):
 
-    def __init__(self):
-        self.Dialog = QtWidgets.QDialog()
+    def __init__(self, parent):
+        FileHandling.__init__(self,".wst")
+        self.Dialog = QtWidgets.QDialog(parent)
         self.ui = mw.Ui_Dialog()
         self.ui.setupUi(self.Dialog)
+
+        self.new_arbeitsschritt: model_Arbeitsschritt.Arbeitsschritt = None
         self.arbeitsschritt: model_Arbeitsschritt.Arbeitsschritt = None
-        self.guischnittparameter = gui_Schnittparameter.gui_Schnittparameter()
+        self.guischnittparameter = gui_Schnittparameter.gui_Schnittparameter(self.Dialog)
+
         self.ui.buttonBox.accepted.connect(self.accepted)
         self.ui.buttonBox.rejected.connect(self.rejected)
         self.ui.pushButton_Schnittparameter.clicked.connect(self.pushButton_Schnittparameter)
@@ -23,16 +30,17 @@ class gui_Arbeitsschrit:
     def show(self, arbeitsschritt: model_Arbeitsschritt.Arbeitsschritt):
         self.ui.lineEdit_bezeichung.setText(arbeitsschritt.name)
         self.arbeitsschritt = arbeitsschritt
+        self.new_arbeitsschritt = copy.deepcopy(arbeitsschritt)
 
         self.Dialog.show()
         self.Dialog.exec()
-        return self.arbeitsschritt
 
     def pushButton_Schnittparameter(self):
-        self.arbeitsschritt.schnittparameter = self.guischnittparameter.show(self.arbeitsschritt.schnittparameter)
+        self.guischnittparameter.show(self.new_arbeitsschritt.schnittparameter)
 
     def accepted(self):
-        self.arbeitsschritt.name = self.ui.lineEdit_bezeichung.text()
+        self.update_model()
+        self.arbeitsschritt.__dict__.update(self.new_arbeitsschritt.__dict__)
         pass
 
     def rejected(self):
@@ -40,32 +48,16 @@ class gui_Arbeitsschrit:
 
     def pushButton_exportieren(self):
         self.update_model()
-        parent = self.arbeitsschritt.parent
-        self.arbeitsschritt.parent = None
-        f = open(f"Setups\\{self.arbeitsschritt.name}.lab", "w+")
-        f.write(my_Json.dumps(self.arbeitsschritt))
-        f.close()
-        self.arbeitsschritt.parent = parent
+        self.safe_file(self.new_arbeitsschritt, self.new_arbeitsschritt.name)
 
     def pushButton_Laden(self):
-        dlg = QtWidgets.QFileDialog()
-        dlg.setFileMode(QtWidgets.QFileDialog.AnyFile)
-        # dlg.setFilter("Text files (*.txt)")
-        # filenames = QStringList()
-
-        if dlg.exec_():
-            parent = self.arbeitsschritt.parent
-            filenames = dlg.selectedFiles()
-
-            f = open(filenames[0], "r")
-            self.arbeitsschritt = my_Json.loads(f.read(), model_Arbeitsschritt.Arbeitsschritt)
-            f.close()
-            self.arbeitsschritt.parent = parent
-
+        data = self.open_file()
+        if data is not None:
+            self.new_arbeitsschritt.__init__(**data)
         self.update_gui()
 
     def update_model(self):
-        self.arbeitsschritt.name = self.ui.lineEdit_bezeichung.text()
+        self.new_arbeitsschritt.name = self.ui.lineEdit_bezeichung.text()
 
     def update_gui(self):
-        self.ui.lineEdit_bezeichung.setText(self.arbeitsschritt.name)
+        self.ui.lineEdit_bezeichung.setText(self.new_arbeitsschritt.name)

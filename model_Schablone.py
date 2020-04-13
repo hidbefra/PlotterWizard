@@ -14,7 +14,7 @@ class Schablone:
         self.name = "Schablone " + Schablone.anzahl.__str__()
         Schablone.anzahl += 1
         self.Prozesse: List[model_Prozess.Prozess] = []
-        self.Prozesse.append(model_Prozess.Prozess(self))
+        self.Prozesse.append(model_Prozess.Prozess())
         self.enabled = 2
 
 

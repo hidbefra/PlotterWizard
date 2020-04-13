@@ -127,6 +127,32 @@
     <string>Rotation [°]</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_exportieren">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>260</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>exportieren</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Laden">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>importieren</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

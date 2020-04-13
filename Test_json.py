@@ -3,6 +3,7 @@ from typing import List
 import my_Json
 import model_Schnittparameter
 
+
 class elter():
     def __init__(self,a):
         self.a = a
@@ -93,27 +94,27 @@ class lecker():
 # spn2 = my_Json.loads(myJsonData, kecks)
 # print(spn2.name)
 
-snp = lecker()
-snp.name = "Humbel"
-snp.anzahl = 389898
-ke = kecks()
-ke.name = "Brunzli"
-snp.container.append(ke)
-myJsonData = my_Json.dumps(snp)
-print(snp.__dict__)
-print(myJsonData)
-spn2: lecker = my_Json.loads(myJsonData, lecker)
-print(spn2.name)
-print(spn2.anzahl)
-print(spn2.container[0].name)
-print(kecks.anzahl)
-
-k = kind(None,1,2)
-myJsonData = my_Json.dumps(k)
-print(myJsonData)
-k2: kind = my_Json.loads(myJsonData, kind)
-print(k2.a)
-print(k2.b)
+# snp = lecker()
+# snp.name = "Humbel"
+# snp.anzahl = 389898
+# ke = kecks()
+# ke.name = "Brunzli"
+# snp.container.append(ke)
+# myJsonData = my_Json.dumps(snp)
+# print(snp.__dict__)
+# print(myJsonData)
+# spn2: lecker = my_Json.loads(myJsonData, lecker)
+# print(spn2.name)
+# print(spn2.anzahl)
+# print(spn2.container[0].name)
+# print(kecks.anzahl)
+#
+# k = kind(None,1,2)
+# myJsonData = my_Json.dumps(k)
+# print(myJsonData)
+# k2: kind = my_Json.loads(myJsonData, kind)
+# print(k2.a)
+# print(k2.b)
 
 
 class Zeugniss:
@@ -145,20 +146,36 @@ class Student:
         self.first_name = first_name
         self.last_name = last_name
 
-        if isinstance(zeugniss, dict):
-            self.zeugniss = Zeugniss(**zeugniss)
-        if type(zeugniss) == Zeugniss:
+        # für klasse
+        if zeugniss is None:
+            self.zeugniss = Zeugniss()
+        elif isinstance(zeugniss, dict):
+            self.zeugniss.__init__(**zeugniss)
+        elif isinstance(zeugniss, Zeugniss):
             self.zeugniss = zeugniss
+        # init_class(self.zeugnis, Zeugniss, zeugniss)
 
+        # für Variable
         self.fächer = fächer
 
-        if isinstance(lehrer[0], dict):
+        # für Listen von klassen
+        if lehrer is None:
+            self.lehrer = []
+        elif isinstance(lehrer[0], dict):
             self.lehrer = []
             for le in lehrer:
                 self.lehrer.append(Lehrer(**le))
-
-        if isinstance(lehrer[0], Lehrer):
+        elif isinstance(lehrer[0], Lehrer):
             self.lehrer = lehrer
+
+
+def init_class(objekt, _class, daten):
+    if daten is None:
+        objekt = _class()
+    elif isinstance(daten, dict):
+        objekt.__init__(**daten)
+    elif isinstance(objekt, _class):
+        objekt = daten
 
 fach = [Fach("musik"),Fach("sex")]
 
@@ -171,7 +188,8 @@ student = Student(first_name="Jake", last_name="Doyle",zeugniss=Zeugniss(6),fäc
 json_data = my_Json.dumps(student)
 # json_data = json.dumps(student.__dict__)
 print(json_data)
-st: Student = Student(**json.loads(json_data))
+st: Student = Student(first_name="nüt", last_name="öpis")
+st.__init__(**json.loads(json_data))
 print(st.zeugniss.note)
 print(*st.fächer)
 

@@ -6,13 +6,38 @@ from typing import List
 
 class Prozess:
 
-    anzhal = 1
+    anzahl = 0
 
-    def __init__(self, parent):
+    def __init__(self, name=None, enabled=None, offset=None, arbeitsschritte=None):
+
+        Prozess.anzahl += 1
+
+        if name is None:
+            self.name = "Prozess" + Prozess.anzahl.__str__()
+        else:
+            self.name = name
+
+        if enabled is None:
+            self.enabled = 2
+        else:
+            self.enabled = enabled
+
+
         self.offset = model_Offset.Offset()
-        self.parent: model_Schablone.Schablone = parent
-        self.name = "Prozess" + Prozess.anzhal.__str__()
-        Prozess.anzhal += 1
-        self.Arbeitsschritte: List[model_Arbeitsschritt.Arbeitsschritt] = []
-        self.Arbeitsschritte.append(model_Arbeitsschritt.Arbeitsschritt(None, self))
-        self.enabled = 2
+        if isinstance(offset, dict):
+            self.offset.__init__(**offset)
+        elif isinstance(offset, model_Offset.Offset) and offset is not None:
+            self.offset = offset
+
+        self.arbeitsschritte: List[model_Arbeitsschritt.Arbeitsschritt] = []
+        if arbeitsschritte is None:
+            self.arbeitsschritte.append(model_Arbeitsschritt.Arbeitsschritt())
+        elif isinstance(arbeitsschritte[0], dict):
+            self.arbeitsschritte = []
+            for le in arbeitsschritte:
+                print("le")
+                print(le)
+                ab = model_Arbeitsschritt.Arbeitsschritt(**le)
+                self.arbeitsschritte.append(ab)
+        elif isinstance(arbeitsschritte[0], model_Arbeitsschritt.Arbeitsschritt) and arbeitsschritte[0] is not None:
+            self.arbeitsschritte = arbeitsschritte

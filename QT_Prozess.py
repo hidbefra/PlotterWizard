@@ -45,6 +45,12 @@ class Ui_Dialog(object):
         self.label_6 = QtWidgets.QLabel(Dialog)
         self.label_6.setGeometry(QtCore.QRect(30, 150, 91, 16))
         self.label_6.setObjectName("label_6")
+        self.pushButton_exportieren = QtWidgets.QPushButton(Dialog)
+        self.pushButton_exportieren.setGeometry(QtCore.QRect(10, 260, 101, 23))
+        self.pushButton_exportieren.setObjectName("pushButton_exportieren")
+        self.pushButton_Laden = QtWidgets.QPushButton(Dialog)
+        self.pushButton_Laden.setGeometry(QtCore.QRect(10, 230, 101, 23))
+        self.pushButton_Laden.setObjectName("pushButton_Laden")
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)
@@ -58,6 +64,8 @@ class Ui_Dialog(object):
         self.label_3.setText(_translate("Dialog", "Offset X [mm]"))
         self.label_4.setText(_translate("Dialog", "Offset Y [mm]"))
         self.label_6.setText(_translate("Dialog", "Rotation [°]"))
+        self.pushButton_exportieren.setText(_translate("Dialog", "exportieren"))
+        self.pushButton_Laden.setText(_translate("Dialog", "importieren"))
 
 
 if __name__ == "__main__":

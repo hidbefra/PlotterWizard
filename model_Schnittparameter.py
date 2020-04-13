@@ -1,11 +1,14 @@
 
 
-class Schnittparameter:
+class Schnittparameter():
     anzahl = 0
 
-    def __init__(self, json=None):
+    def __init__(self, name=None):
         Schnittparameter.anzahl += 1
-        if (json == None):
+
+        if name is None:
             self.name = "Schnittparameter" + Schnittparameter.anzahl.__str__()
         else:
-            self.__dict__ = json
+            self.name = name
+
+

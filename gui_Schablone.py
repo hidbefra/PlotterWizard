@@ -6,8 +6,8 @@ import model_Schablone
 
 class gui_Schablone:
 
-    def __init__(self):
-        self.Dialog = QtWidgets.QDialog()
+    def __init__(self, parent):
+        self.Dialog = QtWidgets.QDialog(parent)
         self.ui = mw.Ui_Dialog()
         self.ui.setupUi(self.Dialog)
         self.schablone: model_Schablone.Schablone = None
