@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+from itertools import cycle
 
 import gui_Arbeitsschritt
 import gui_Schablone
@@ -29,6 +30,8 @@ class gui_MainWindow_schnittomat():
         self.ui.pushButton_Arbeitsschritt_hinzufgen.clicked.connect(self.pushButton_Arbeitsschritt_hinzufgen)
         self.ui.pushButton_Schablone_hinzufgen.clicked.connect(self.pushButton_Schablone_hinzufgen)
         self.ui.pushButton_Prozess_hinzufgen.clicked.connect(self.pushButton_Prozess_hinzufgen)
+        self.ui.pushButton_Start.clicked.connect(self.pushButton_Start)
+        self.ui.pushButton_Stop.clicked.connect(self.pushButton_Stop)
 
         self.ui.treeWidget_Produktion.itemDoubleClicked.connect(self.ondoubleclick)
         self.ui.treeWidget_Produktion.itemChanged.connect(self.treeWidget_Produktion_itemChanged)
@@ -51,37 +54,38 @@ class gui_MainWindow_schnittomat():
 
         # item = my_QTreeWidgetItem.my_QTreeWidgetItem(self.ui.treeWidget_Produktion)
 
-        self.Setups = model_Setups.Setups(self.ui.treeWidget_Produktion)  # erstellen des Models
+        self.setups = model_Setups.Setups()  # erstellen des Models
+        self.running = False
 
         self.parents = {}  # um die elemente im treeWidget löschen zu können weird eine Referenz auf das Elter benötigt
 
         self.update_TreeWidget()
 
-        print(self.Setups.__dict__)
+
 
     def update_TreeWidget(self):
 
         self.ui.treeWidget_Produktion.clear()
 
-        self.ui.treeWidget_Produktion.headerItem().setText(0, self.Setups.name)
+        self.ui.treeWidget_Produktion.headerItem().setText(0, self.setups.name)
         self.parents = {}
-        for schablone in self.Setups.Schablonen:
+        for schablone in self.setups.schablonen:
             item = my_QTreeWidgetItem.my_QTreeWidgetItem(self.ui.treeWidget_Produktion)
             item.setText(0, schablone.name)
             item.setFlags(item.flags() | QtCore.Qt.ItemIsTristate | QtCore.Qt.ItemIsUserCheckable)
             item.setCheckState(0, schablone.enabled)
             item.modul = schablone
             self.ui.treeWidget_Produktion.addTopLevelItem(item)
-            self.parents[id(schablone)] = self.Setups.Schablonen
+            self.parents[id(schablone)] = self.setups.schablonen
 
-            for prozzess in schablone.Prozesse:
+            for prozzess in schablone.prozesse:
                 item2 = my_QTreeWidgetItem.my_QTreeWidgetItem(item)
                 item2.setText(0, prozzess.name)
                 item2.setFlags(item2.flags() | QtCore.Qt.ItemIsTristate | QtCore.Qt.ItemIsUserCheckable)
                 item2.setCheckState(0, prozzess.enabled)
                 item2.modul = prozzess
                 item.addChild(item2)
-                self.parents[id(prozzess)] = schablone.Prozesse
+                self.parents[id(prozzess)] = schablone.prozesse
 
                 for arbeitsscritt in prozzess.arbeitsschritte:
                     item3 = my_QTreeWidgetItem.my_QTreeWidgetItem(item)
@@ -104,6 +108,35 @@ class gui_MainWindow_schnittomat():
         pass
 
     def pushButton_Prozess_hinzufgen(self):
+        pass
+
+    def pushButton_Start(self):
+        self.running = True
+
+        self.prozess_list = []
+
+        # neu ordnen. von jeder Schablone den ersten Prozess dan von jeder Schablone den zweiten Prozess usw.
+        schabloneposition = 0
+        for schablone in self.setups.schablonen:
+            insertposition = schabloneposition
+            schritt = schabloneposition + 1
+            for prozess in schablone.prozesse:
+                arbeitsschritt_list=[]
+                for arbeitsschritt in prozess.arbeitsschritte:
+                    arbeitsschritt_list.append(arbeitsschritt)
+                self.prozess_list.insert(insertposition,arbeitsschritt_list)
+                insertposition = insertposition + schritt
+            schabloneposition +=1
+
+
+        for arbeitsschritt_list in self.prozess_list:
+            for arbeitsschritt in arbeitsschritt_list:
+                print(arbeitsschritt.name)
+
+        pass
+
+    def pushButton_Stop(self):
+        self.running = False
         pass
 
     def ondoubleclick(self, previous):
@@ -137,7 +170,7 @@ class gui_MainWindow_schnittomat():
 
         if modul is None:
             print("EditContent für Setup")
-            self.guiSetups.show(self.Setups)
+            self.guiSetups.show(self.setups)
 
         self.update_TreeWidget()
 
@@ -145,7 +178,7 @@ class gui_MainWindow_schnittomat():
         print(modul)
         if type(modul) is model_Schablone.Schablone:
             md: model_Schablone.Schablone = modul
-            md.Prozesse.append(model_Prozess.Prozess())
+            md.prozesse.append(model_Prozess.Prozess())
             print("EditContent für SChablone")
 
         if type(modul) is model_Prozess.Prozess:
@@ -155,7 +188,7 @@ class gui_MainWindow_schnittomat():
 
         if modul is None:
             print("EditContent für Setup")
-            self.Setups.Schablonen.append(model_Schablone.Schablone())
+            self.setups.schablonen.append(model_Schablone.Schablone())
 
         self.update_TreeWidget()
 

@@ -6,16 +6,15 @@ import os
 class FileHandling:
 
     system_path = ""
-
+    last_path = None
 
     def __init__(self, extension):
         self.extension = extension
-        self.last_path = None
 
     def safe_file(self,data,name):
         fileName_struct = QtWidgets.QFileDialog.getSaveFileName(None,
                                                                 "Save config to file",
-                                                                f"{self.get_last_dir()}//{name}",
+                                                                f"{self.get_last_dir()}\\{name}",
                                                                 f"Config (*{self.extension})")
         fileName = fileName_struct[0]
         if fileName:
@@ -40,10 +39,10 @@ class FileHandling:
         return data
 
     def safe_last_dir(self,fileName):
-        self.last_path = os.path.dirname(fileName)
+        FileHandling.last_path = os.path.dirname(fileName)
 
     def get_last_dir(self):
-        mydir = self.last_path
+        mydir = FileHandling.last_path
         if mydir is None:
             mydir = self.system_path
         return mydir

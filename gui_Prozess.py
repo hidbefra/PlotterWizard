@@ -26,10 +26,10 @@ class gui_Prozess(FileHandling):
 
 
     def show(self, prozess: model_Prozess.Prozess):
-        self.ui.lineEdit_bezeichung.setText(prozess.name)
-
         self.prozess = prozess
         self.new_prozess = copy.deepcopy(prozess)
+
+        self.update_gui()
 
         self.Dialog.show()
         self.Dialog.exec()

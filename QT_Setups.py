@@ -13,9 +13,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 231)
+        Dialog.resize(400, 314)
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox.setGeometry(QtCore.QRect(40, 180, 341, 32))
+        self.buttonBox.setGeometry(QtCore.QRect(40, 260, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
@@ -45,6 +45,12 @@ class Ui_Dialog(object):
         self.lineEdit_offset_X = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_offset_X.setGeometry(QtCore.QRect(130, 70, 121, 20))
         self.lineEdit_offset_X.setObjectName("lineEdit_offset_X")
+        self.pushButton_exportieren = QtWidgets.QPushButton(Dialog)
+        self.pushButton_exportieren.setGeometry(QtCore.QRect(20, 280, 101, 23))
+        self.pushButton_exportieren.setObjectName("pushButton_exportieren")
+        self.pushButton_Laden = QtWidgets.QPushButton(Dialog)
+        self.pushButton_Laden.setGeometry(QtCore.QRect(20, 250, 101, 23))
+        self.pushButton_Laden.setObjectName("pushButton_Laden")
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)
@@ -58,6 +64,8 @@ class Ui_Dialog(object):
         self.label_3.setText(_translate("Dialog", "Offset X [mm]"))
         self.label_6.setText(_translate("Dialog", "Rotation [°]"))
         self.label_4.setText(_translate("Dialog", "Offset Y [mm]"))
+        self.pushButton_exportieren.setText(_translate("Dialog", "exportieren"))
+        self.pushButton_Laden.setText(_translate("Dialog", "importieren"))
 
 
 if __name__ == "__main__":

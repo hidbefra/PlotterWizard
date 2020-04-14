@@ -28,9 +28,10 @@ class gui_Arbeitsschrit(FileHandling):
         self.ui.pushButton_exportieren.clicked.connect(self.pushButton_exportieren)
 
     def show(self, arbeitsschritt: model_Arbeitsschritt.Arbeitsschritt):
-        self.ui.lineEdit_bezeichung.setText(arbeitsschritt.name)
         self.arbeitsschritt = arbeitsschritt
         self.new_arbeitsschritt = copy.deepcopy(arbeitsschritt)
+
+        self.update_gui()
 
         self.Dialog.show()
         self.Dialog.exec()

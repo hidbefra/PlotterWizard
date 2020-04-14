@@ -42,7 +42,7 @@
     <string>Bezeichung</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_Bezeichung">
+  <widget class="QLineEdit" name="lineEdit_bezeichung">
    <property name="geometry">
     <rect>
      <x>20</x>
