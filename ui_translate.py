@@ -15,6 +15,10 @@ def ui_translate():
 
     os.system(pfad + " -x -o QT_Schnittparameter.py QT_Schnittparameter.ui")
 
+    os.system(pfad + " -x -o QT_Settings.py QT_Settings.ui")
+
+    os.system("venv\\Scripts\\pyrcc5.exe -o QT_Designer_resources_rc.py QT_Designer_resources.qrc")
+
 
 if __name__ == "__main__":
     print("translate ui to py")

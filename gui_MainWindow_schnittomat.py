@@ -6,6 +6,7 @@ import gui_Arbeitsschritt
 import gui_Schablone
 import gui_Prozess
 import gui_Setups
+import gui_Sttings
 
 import my_QTreeWidgetItem
 
@@ -13,6 +14,9 @@ import model_Setups
 import model_Schablone
 import model_Prozess
 import model_Arbeitsschritt
+import model_Settings
+
+from file_handling import FileHandling
 
 import QT_MainWindow_schnittomat as mw
 
@@ -37,11 +41,17 @@ class gui_MainWindow_schnittomat():
         self.ui.treeWidget_Produktion.itemChanged.connect(self.treeWidget_Produktion_itemChanged)
         self.ui.treeWidget_Produktion.itemClicked.connect(self.treeWidget_Produktion_clicked)
 
+        self.ui.actionopen.triggered.connect(self.actionOpen_clicked)
+        self.ui.actionnew.triggered.connect(self.actionnew_clicked)
+        self.ui.actionsave.triggered.connect(self.actionsave_clicked)
+        self.ui.actionSettings.triggered.connect(self.actionSettings_clicked)
+
         self.treeWidget_Produktion_head: QtWidgets.QHeaderView = self.ui.treeWidget_Produktion.header()
         self.treeWidget_Produktion_head.setSectionsClickable(True)
         self.treeWidget_Produktion_head.sectionDoubleClicked.connect(self.treeWidget_Produktion_head_DoubleClicked)
         self.treeWidget_Produktion_head.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.treeWidget_Produktion_head.customContextMenuRequested.connect(self.openMenu_treeHead)
+
 
         # self.ui.treeWidget_Produktion.setAcceptDrops(True)
         # self.ui.treeWidget_Produktion.setDragEnabled(True)
@@ -54,6 +64,8 @@ class gui_MainWindow_schnittomat():
 
         # item = my_QTreeWidgetItem.my_QTreeWidgetItem(self.ui.treeWidget_Produktion)
 
+        self.filehandeling = FileHandling(".set")
+
         self.setups = model_Setups.Setups()  # erstellen des Models
         self.running = False
 
@@ -61,7 +73,13 @@ class gui_MainWindow_schnittomat():
 
         self.update_TreeWidget()
 
+        self.status_text = ""
+        self.update_gui()
 
+        self.settings = model_Settings.Settings()
+
+    def update_gui(self):
+        self.ui.textEdit_Statu_Meldung.setText(self.status_text)
 
     def update_TreeWidget(self):
 
@@ -101,40 +119,14 @@ class gui_MainWindow_schnittomat():
     def show(self):
         self.MainWindow.show()
 
-    def pushButton_Arbeitsschritt_hinzufgen(self):
-        pass
-
-    def pushButton_Schablone_hinzufgen(self):
-        pass
-
-    def pushButton_Prozess_hinzufgen(self):
-        pass
-
     def pushButton_Start(self):
         self.running = True
-
-        # self.prozess_list = []
-
-        # neu ordnen. von jeder Schablone den ersten Prozess dan von jeder Schablone den zweiten Prozess usw.
-        # schabloneposition = 0
-        # for schablone in self.setups.schablonen:
-        #     insertposition = schabloneposition
-        #     schritt = schabloneposition + 1
-        #     for prozess in schablone.prozesse:
-        #         arbeitsschritt_list=[]
-        #         for arbeitsschritt in prozess.arbeitsschritte:
-        #             arbeitsschritt_list.append(arbeitsschritt)
-        #         self.prozess_list.insert(insertposition,arbeitsschritt_list)
-        #         insertposition = insertposition + schritt
-        #     schabloneposition +=1
 
         self.prozess_list = self.setups.reorder()
 
         for arbeitsschritt_list in self.prozess_list:
             for arbeitsschritt in arbeitsschritt_list:
                 print(arbeitsschritt.hpgl_structure.encode())
-
-        pass
 
     def pushButton_Stop(self):
         self.running = False
@@ -250,3 +242,21 @@ class gui_MainWindow_schnittomat():
 
         if action == edit:
             self.edit_modul(None)
+
+    def actionOpen_clicked(self):
+        data = self.filehandeling.open_json_file()
+        if data is not None:
+            self.setups.__init__(**data)
+        self.update_TreeWidget()
+
+    def actionnew_clicked(self):
+        self.setups = model_Setups.Setups()
+        self.update_TreeWidget()
+
+    def actionsave_clicked(self):
+        self.filehandeling.safe_json_file(self.setups, self.setups.name)
+
+    def actionSettings_clicked(self):
+        gui = gui_Sttings.gui_Settings(self.MainWindow, self.settings)
+        gui.show()
+

@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/2413.ico</file>
+    <file>icons/1959.ico</file>
+    <file>icons/1951.ico</file>
+    <file>icons/71.ico</file>
+  </qresource>
+</RCC>

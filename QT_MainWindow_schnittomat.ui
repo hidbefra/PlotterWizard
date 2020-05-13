@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>601</width>
-    <height>870</height>
+    <width>615</width>
+    <height>917</height>
    </rect>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="contextMenuPolicy">
    <enum>Qt::ActionsContextMenu</enum>
@@ -21,7 +27,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>750</y>
+      <y>790</y>
       <width>101</width>
       <height>51</height>
      </rect>
@@ -39,7 +45,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>750</y>
+      <y>790</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -59,8 +65,14 @@
       <x>20</x>
       <y>110</y>
       <width>551</width>
-      <height>541</height>
+      <height>591</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>591</height>
+     </size>
     </property>
     <property name="mouseTracking">
      <bool>false</bool>
@@ -90,7 +102,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>670</y>
+      <y>710</y>
       <width>551</width>
       <height>71</height>
      </rect>
@@ -120,17 +132,23 @@ p, li { white-space: pre-wrap; }
       <height>71</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>18</pointsize>
      </font>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;CV 95 A2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:18pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -139,7 +157,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>601</width>
+     <width>615</width>
      <height>21</height>
     </rect>
    </property>
@@ -147,35 +165,73 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Setup</string>
     </property>
-    <addaction name="actionserial_communication"/>
+    <addaction name="actionSettings"/>
    </widget>
    <widget class="QMenu" name="menuDatei">
     <property name="title">
      <string>Datei</string>
     </property>
-    <addaction name="actionOpen"/>
-    <addaction name="actionSpeichern"/>
+    <addaction name="actionopen"/>
+    <addaction name="actionnew"/>
+    <addaction name="actionsave"/>
    </widget>
    <addaction name="menuDatei"/>
    <addaction name="menutest"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionserial_communication">
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionopen"/>
+   <addaction name="actionsave"/>
+   <addaction name="actionnew"/>
+  </widget>
+  <action name="actionnew">
+   <property name="icon">
+    <iconset resource="QT_Designer_resources.qrc">
+     <normaloff>:/icons/icons/71.ico</normaloff>:/icons/icons/71.ico</iconset>
+   </property>
    <property name="text">
-    <string>serial communication</string>
+    <string>new</string>
    </property>
   </action>
-  <action name="actionOpen">
+  <action name="actionsave">
+   <property name="icon">
+    <iconset resource="QT_Designer_resources.qrc">
+     <normaloff>:/icons/icons/1959.ico</normaloff>:/icons/icons/1959.ico</iconset>
+   </property>
    <property name="text">
-    <string>Open</string>
+    <string>save</string>
    </property>
   </action>
-  <action name="actionSpeichern">
+  <action name="actionopen">
+   <property name="icon">
+    <iconset resource="QT_Designer_resources.qrc">
+     <normaloff>:/icons/icons/1951.ico</normaloff>:/icons/icons/1951.ico</iconset>
+   </property>
    <property name="text">
-    <string>Speichern</string>
+    <string>open</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="QT_Designer_resources.qrc">
+     <normaloff>:/icons/icons/2413.ico</normaloff>:/icons/icons/2413.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="QT_Designer_resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
