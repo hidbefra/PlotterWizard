@@ -41,3 +41,6 @@ class Prozess:
                 self.arbeitsschritte.append(ab)
         elif isinstance(arbeitsschritte[0], model_Arbeitsschritt.Arbeitsschritt) and arbeitsschritte[0] is not None:
             self.arbeitsschritte = arbeitsschritte
+
+    def copy_from(self, parameter):
+        self.__dict__.update(parameter.__dict__)

@@ -35,18 +35,19 @@ class gui_Prozess(FileHandling):
         self.Dialog.exec()
 
     def pushButton_Laden(self):
-        data = self.open_file()
+        data = self.open_json_file()
         if data is not None:
             self.new_prozess.__init__(**data)
         self.update_gui()
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_file(self.new_prozess, self.new_prozess.name)
+        self.safe_json_file(self.new_prozess, self.new_prozess.name)
 
     def accepted(self):
         self.update_model()
-        self.prozess.__dict__.update(self.new_prozess.__dict__)
+        self.prozess.copy_from(self.new_prozess)
+        # self.prozess.__dict__.update(self.new_prozess.__dict__)
         # print(self.new_prozess.__dict__)
         # # self.arbeitsschritt.__dict__.update(self.new_arbeitsschritt.__dict__)
         # print("blub")

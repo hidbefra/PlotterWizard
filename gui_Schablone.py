@@ -49,7 +49,7 @@ class gui_Schablone(FileHandling):
 
 
     def pushButton_Laden(self):
-        data = self.open_file()
+        data = self.open_json_file()
         if data is not None:
             self.new_schablone.__init__(**data)
         self.update_gui()
@@ -57,12 +57,13 @@ class gui_Schablone(FileHandling):
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_file(self.new_schablone, self.new_schablone.name)
+        self.safe_json_file(self.new_schablone, self.new_schablone.name)
 
 
     def accepted(self):
         self.update_model()
-        self.schablone.__dict__.update(self.new_schablone.__dict__)
+        self.schablone.copy_from(self.new_schablone)
+        # self.schablone.__dict__.update(self.new_schablone.__dict__)
 
     def rejected(self):
         pass

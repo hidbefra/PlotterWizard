@@ -11,7 +11,7 @@ class FileHandling:
     def __init__(self, extension):
         self.extension = extension
 
-    def safe_file(self,data,name):
+    def safe_json_file(self, data, name):
         fileName_struct = QtWidgets.QFileDialog.getSaveFileName(None,
                                                                 "Save config to file",
                                                                 f"{self.get_last_dir()}\\{name}",
@@ -24,7 +24,7 @@ class FileHandling:
             self.safe_last_dir(fileName)
             print(self.last_path)
 
-    def open_file(self):
+    def open_json_file(self):
         fileName_struct = QtWidgets.QFileDialog.getOpenFileName(None,
                                                                 "Open config to file",
                                                                 f"{self.get_last_dir()}",
@@ -36,6 +36,18 @@ class FileHandling:
             data = my_Json.loads(f.read())
             f.close()
             self.safe_last_dir(fileName)
+        return data
+
+    def open_file(self):
+        fileName_struct = QtWidgets.QFileDialog.getOpenFileName(None,
+                                                                "Open config to file",
+                                                                f"{self.get_last_dir()}")
+        fileName = fileName_struct[0]
+        data = None
+        if fileName:
+            f = open(fileName, "r")
+            data = f.read()
+            f.close()
         return data
 
     def safe_last_dir(self,fileName):

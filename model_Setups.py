@@ -36,3 +36,31 @@ class Setups:
                 self.schablonen.append(ab)
         elif isinstance(schablonen[0], model_Schablone.Schablone) and schablonen[0] is not None:
             self.schablonen = schablonen
+
+    def copy_from(self, parameter):
+        self.__dict__.update(parameter.__dict__)
+
+    def reorder(self):
+        prozess_list = []
+
+        # neu ordnen. von jeder Schablone den ersten Prozess dan von jeder Schablone den zweiten Prozess usw.
+        schabloneposition = 0
+        for schablone in self.schablonen:
+            insertposition = schabloneposition
+            schritt = schabloneposition + 1
+            for prozess in schablone.prozesse:
+                arbeitsschritt_list=[]
+                for arbeitsschritt in prozess.arbeitsschritte:
+                    arbeitsschritt_list.append(arbeitsschritt)
+                prozess_list.insert(insertposition,arbeitsschritt_list)
+                insertposition = insertposition + schritt
+            schabloneposition +=1
+
+        return prozess_list
+
+
+        # for arbeitsschritt_list in prozess_list:
+        #     for arbeitsschritt in arbeitsschritt_list:
+        #         print(arbeitsschritt.hpgl_structure.encode())
+        #
+        # pass

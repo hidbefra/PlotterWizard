@@ -6,3 +6,6 @@ class Offset:
         self.x = x
         self.y = y
         self.phi = phi
+
+    def copy_from(self, parameter):
+        self.__dict__.update(parameter.__dict__)

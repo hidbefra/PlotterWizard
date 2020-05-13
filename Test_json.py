@@ -2,6 +2,7 @@ import json
 from typing import List
 import my_Json
 import model_Schnittparameter
+from model_Hpgl import *
 
 
 class elter():
@@ -179,9 +180,13 @@ def init_class(objekt, _class, daten):
 
 fach = [Fach("musik"),Fach("sex")]
 
-fächer=["mateh","sport","tanz"]
+c1 = HpglCommand("PD", [1000,1000])
+c2 = HpglCommand("PU", [333,333])
+c3 = HpglCommand("NR",prefix=c1,suffix=c2)
 
-lehrer=[Lehrer("Paul",fach),Lehrer("Fredy",fach)]
+fächer=[c1,c2,c3]
+
+lehrer=[Lehrer("Paul Peter",fach),Lehrer("Fredy",fach)]
 
 student = Student(first_name="Jake", last_name="Doyle",zeugniss=Zeugniss(6),fächer=fächer, lehrer=lehrer)
 
@@ -189,7 +194,7 @@ json_data = my_Json.dumps(student)
 # json_data = json.dumps(student.__dict__)
 print(json_data)
 st: Student = Student(first_name="nüt", last_name="öpis")
-st.__init__(**json.loads(json_data))
+st.__init__(**my_Json.loads(json_data))
 print(st.zeugniss.note)
 print(*st.fächer)
 
@@ -198,3 +203,6 @@ fa: Fach
 for le in st.lehrer:
     for fa in le.fach:
         print(f"{le.name} {fa.name}")
+
+a = {"test": Hpgl_structure("LL")}
+print(a["test"].code)

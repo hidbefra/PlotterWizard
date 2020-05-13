@@ -49,3 +49,6 @@ class Schablone:
                 self.prozesse.append(ab)
         elif isinstance(prozesse[0], model_Prozess.Prozess) and prozesse[0] is not None:
             self.prozesse = prozesse
+
+    def copy_from(self, parameter):
+        self.__dict__.update(parameter.__dict__)

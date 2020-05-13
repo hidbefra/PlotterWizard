@@ -26,6 +26,7 @@ class gui_Arbeitsschrit(FileHandling):
         self.ui.pushButton_Schnittparameter.clicked.connect(self.pushButton_Schnittparameter)
         self.ui.pushButton_Laden.clicked.connect(self.pushButton_Laden)
         self.ui.pushButton_exportieren.clicked.connect(self.pushButton_exportieren)
+        self.ui.pushButton_Geometrie_Importieren.clicked.connect(self.pushButton_Geometrie_Importieren)
 
     def show(self, arbeitsschritt: model_Arbeitsschritt.Arbeitsschritt):
         self.arbeitsschritt = arbeitsschritt
@@ -37,11 +38,15 @@ class gui_Arbeitsschrit(FileHandling):
         self.Dialog.exec()
 
     def pushButton_Schnittparameter(self):
+        self.new_arbeitsschritt.decode_schnittparameter()
         self.guischnittparameter.show(self.new_arbeitsschritt.schnittparameter)
+        self.new_arbeitsschritt.assigned_new_schnittparameter()
+
 
     def accepted(self):
         self.update_model()
-        self.arbeitsschritt.__dict__.update(self.new_arbeitsschritt.__dict__)
+        # self.arbeitsschritt.__dict__.update(self.new_arbeitsschritt.__dict__)
+        self.arbeitsschritt.copy_from(self.new_arbeitsschritt)
         pass
 
     def rejected(self):
@@ -49,16 +54,25 @@ class gui_Arbeitsschrit(FileHandling):
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_file(self.new_arbeitsschritt, self.new_arbeitsschritt.name)
+        self.safe_json_file(self.new_arbeitsschritt, self.new_arbeitsschritt.name)
 
     def pushButton_Laden(self):
-        data = self.open_file()
+        data = self.open_json_file()
         if data is not None:
             self.new_arbeitsschritt.__init__(**data)
         self.update_gui()
 
     def update_model(self):
         self.new_arbeitsschritt.name = self.ui.lineEdit_bezeichung.text()
+        self.new_arbeitsschritt.hpgl_structure.code = self.ui.textBrowser_Geometrie.toPlainText()
 
     def update_gui(self):
         self.ui.lineEdit_bezeichung.setText(self.new_arbeitsschritt.name)
+        self.ui.textBrowser_Geometrie.setText(self.new_arbeitsschritt.hpgl_structure.code)
+
+    def pushButton_Geometrie_Importieren(self):
+        data = self.open_file()
+        if data is not None:
+            self.new_arbeitsschritt.hpgl_structure.code = data
+            self.new_arbeitsschritt.hpgl_structure.decode()
+            self.update_gui()

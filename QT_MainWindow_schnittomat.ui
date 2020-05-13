@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>601</width>
     <height>870</height>
    </rect>
   </property>
@@ -20,8 +20,8 @@
    <widget class="QPushButton" name="pushButton_Stop">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>770</y>
+      <x>300</x>
+      <y>750</y>
       <width>101</width>
       <height>51</height>
      </rect>
@@ -38,8 +38,8 @@
    <widget class="QPushButton" name="pushButton_Start">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>770</y>
+      <x>170</x>
+      <y>750</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -58,8 +58,8 @@
      <rect>
       <x>20</x>
       <y>110</y>
-      <width>256</width>
-      <height>701</height>
+      <width>551</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="mouseTracking">
@@ -83,80 +83,15 @@
      </property>
     </column>
    </widget>
-   <widget class="QPushButton" name="pushButton_hoch">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>270</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>hoch</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_runter">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>300</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>runter </string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_Schablone_hinzufgen">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>130</y>
-      <width>171</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>add Schablone</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_Arbeitschrit_Delete">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>330</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Delete</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_edit">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>240</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>edit</string>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="textEdit_Statu_Meldung">
     <property name="enabled">
      <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>680</y>
-      <width>461</width>
+      <x>20</x>
+      <y>670</y>
+      <width>551</width>
       <height>71</height>
      </rect>
     </property>
@@ -173,41 +108,15 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;eine Kerbe einlegen&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_Prozess_hinzufgen">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>160</y>
-      <width>141</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>add Prozess</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_Arbeitsschritt_hinzufgen">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>190</y>
-      <width>111</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>add Arbeitsschritt</string>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="textEdit_config_Name">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>681</width>
+      <x>20</x>
+      <y>30</y>
+      <width>551</width>
       <height>71</height>
      </rect>
     </property>
@@ -224,23 +133,13 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;CV 95 A2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QTreeView" name="treeView">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>360</y>
-      <width>256</width>
-      <height>192</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>601</width>
      <height>21</height>
     </rect>
    </property>

@@ -27,9 +27,9 @@ class gui_MainWindow_schnittomat():
         self.ui.treeWidget_Produktion.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.ui.treeWidget_Produktion.customContextMenuRequested.connect(self.openMenu_treeItem)
 
-        self.ui.pushButton_Arbeitsschritt_hinzufgen.clicked.connect(self.pushButton_Arbeitsschritt_hinzufgen)
-        self.ui.pushButton_Schablone_hinzufgen.clicked.connect(self.pushButton_Schablone_hinzufgen)
-        self.ui.pushButton_Prozess_hinzufgen.clicked.connect(self.pushButton_Prozess_hinzufgen)
+        # self.ui.pushButton_Arbeitsschritt_hinzufgen.clicked.connect(self.pushButton_Arbeitsschritt_hinzufgen)
+        # self.ui.pushButton_Schablone_hinzufgen.clicked.connect(self.pushButton_Schablone_hinzufgen)
+        # self.ui.pushButton_Prozess_hinzufgen.clicked.connect(self.pushButton_Prozess_hinzufgen)
         self.ui.pushButton_Start.clicked.connect(self.pushButton_Start)
         self.ui.pushButton_Stop.clicked.connect(self.pushButton_Stop)
 
@@ -113,25 +113,26 @@ class gui_MainWindow_schnittomat():
     def pushButton_Start(self):
         self.running = True
 
-        self.prozess_list = []
+        # self.prozess_list = []
 
         # neu ordnen. von jeder Schablone den ersten Prozess dan von jeder Schablone den zweiten Prozess usw.
-        schabloneposition = 0
-        for schablone in self.setups.schablonen:
-            insertposition = schabloneposition
-            schritt = schabloneposition + 1
-            for prozess in schablone.prozesse:
-                arbeitsschritt_list=[]
-                for arbeitsschritt in prozess.arbeitsschritte:
-                    arbeitsschritt_list.append(arbeitsschritt)
-                self.prozess_list.insert(insertposition,arbeitsschritt_list)
-                insertposition = insertposition + schritt
-            schabloneposition +=1
+        # schabloneposition = 0
+        # for schablone in self.setups.schablonen:
+        #     insertposition = schabloneposition
+        #     schritt = schabloneposition + 1
+        #     for prozess in schablone.prozesse:
+        #         arbeitsschritt_list=[]
+        #         for arbeitsschritt in prozess.arbeitsschritte:
+        #             arbeitsschritt_list.append(arbeitsschritt)
+        #         self.prozess_list.insert(insertposition,arbeitsschritt_list)
+        #         insertposition = insertposition + schritt
+        #     schabloneposition +=1
 
+        self.prozess_list = self.setups.reorder()
 
         for arbeitsschritt_list in self.prozess_list:
             for arbeitsschritt in arbeitsschritt_list:
-                print(arbeitsschritt.name)
+                print(arbeitsschritt.hpgl_structure.encode())
 
         pass
 

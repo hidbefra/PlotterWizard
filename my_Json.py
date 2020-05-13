@@ -7,12 +7,16 @@ class MyJsonEncoder(json.JSONEncoder):
 
 
 def dumps(obj):
-    return json.dumps(obj, indent=4, cls=MyJsonEncoder)
+    jstring = json.dumps(obj, indent=4, cls=MyJsonEncoder)
+    # jstring.replace("\\n", "\n")
+    return jstring
 
 
-def loads(jsondata):
+def loads(jsondata: str):
+    # jsondata.replace("\n","\\n")
     return json.loads(jsondata)
 
 def symply_dumps(obj):
     jsondata = json.dumps(obj, cls=MyJsonEncoder)
     return json.loads(jsondata)
+

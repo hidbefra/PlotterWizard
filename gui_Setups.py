@@ -47,18 +47,19 @@ class gui_Setups(FileHandling):
         self.Dialog.exec()
 
     def pushButton_Laden(self):
-        data = self.open_file()
+        data = self.open_json_file()
         if data is not None:
             self.new_setups.__init__(**data)
         self.update_gui()
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_file(self.new_setups, self.new_setups.name)
+        self.safe_json_file(self.new_setups, self.new_setups.name)
 
     def accepted(self):
         self.update_model()
-        self.setups.__dict__.update(self.new_setups.__dict__)
+        # self.setups.__dict__.update(self.new_setups.__dict__)
+        self.setups.copy_from(self.new_setups)
 
     def rejected(self):
         pass
