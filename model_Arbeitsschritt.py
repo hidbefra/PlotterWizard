@@ -39,7 +39,7 @@ class Arbeitsschritt:
         elif isinstance(hpgl_structure, Hpgl_structure) and hpgl_structure is not None:
             self.hpgl_structure = hpgl_structure
 
-    def decode_schnittparameter(self): # suche nach den schnittparameter im HPGL cod
+    def schnittparameter_decode(self): # suche nach den schnittparameter im HPGL cod
         for key in self.schnittparameter.parameter_dict:
             # self.schnittparameter.parameter_dict[key] = self.hpgl_structure.get_first_of(HpglCommand(code=key))
             self.schnittparameter.parameter_dict[key] = self.hpgl_structure.get_first_of(self.schnittparameter.parameter_dict[key])
@@ -48,7 +48,6 @@ class Arbeitsschritt:
     def assigned_new_schnittparameter(self):
         for key in self.schnittparameter.parameter_dict:
             self.hpgl_structure.replace_all_command_with(self.schnittparameter.parameter_dict[key])
-
 
     def copy_from(self, parameter):
         self.__dict__.update(parameter.__dict__)

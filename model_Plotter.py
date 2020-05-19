@@ -83,6 +83,8 @@ class Plotter:
         self.ser.write("CI{}".format(r*100).encode())
         self.move(x, y)
 
+
+
 def einrichten():
     # test mauel einrichten
     pt = Plotter()

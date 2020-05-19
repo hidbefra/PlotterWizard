@@ -12,16 +12,16 @@ class HpglCommand:
                     "QU": int, "XX": int, "PB": int, "EG": int, "PB": int, "PU": int,
                     "AA": [int, int, float], "SZ": float, "PW": float}
 
-    def __init__(self,command="",parameters=[],prefix=None,suffix=None,code=None):
-        self.command = command
-        self.parameters = parameters
+    def __init__(self, _command="", _parameters=[], prefix=None, suffix=None, code=None):
+        self._command = _command
+        self._parameters = _parameters
         # self.prefix: HpglCommand = prefix
         # self.suffix:HpglCommand = suffix
 
         if code is not None:
             self.decode(code)
 
-        self.parameters = list(filter(("").__ne__, self.parameters)) #lehre stellen löschen
+        self._parameters = list(filter(("").__ne__, self._parameters)) #lehre stellen löschen
 
         self.prefix: HpglCommand = None
         if isinstance(prefix, dict):
@@ -36,27 +36,27 @@ class HpglCommand:
             self.suffix = suffix
 
     def get_command(self):
-        if self.command == "XX":
-            if self.parameters[0] == "13":
-                return self.command + self.parameters[0] + "," + self.parameters[1]
+        if self._command == "XX":
+            if self._parameters[0] == "13":
+                return self._command + self._parameters[0] + "," + self._parameters[1]
             else:
-                return self.command + self.parameters[0]
-        elif self.command == "PB":
-            return self.command + self.parameters[0]
+                return self._command + self._parameters[0]
+        elif self._command == "PB":
+            return self._command + self._parameters[0]
         else:
-            return self.command
+            return self._command
 
     def get_parameters(self, typ=None):
-        if self.command == "XX":
-            ret = self.parameters[1:]
-        elif self.command == "PB":
-            ret = self.parameters[1:]
+        if self._command == "XX":
+            ret = self._parameters[1:]
+        elif self._command == "PB":
+            ret = self._parameters[1:]
         else:
-            ret = self.parameters
+            ret = self._parameters
         this_typ = typ
         if this_typ is None:
-            if self.command in HpglCommand.datatyp_dict:
-                this_typ = HpglCommand.datatyp_dict[self.command]
+            if self._command in HpglCommand.datatyp_dict:
+                this_typ = HpglCommand.datatyp_dict[self._command]
             else:
                 this_typ = str
 
@@ -69,19 +69,19 @@ class HpglCommand:
 
     def set_parameter(self,data):
         str_data = [str(x) if x is not "" else x for x in data]
-        if self.command == "XX":
-            if self.parameters[0] == "13":
-                str_data.insert(0, self.parameters[1])
-                str_data.insert(0, self.parameters[0])
-                self.parameters = str_data
+        if self._command == "XX":
+            if self._parameters[0] == "13":
+                str_data.insert(0, self._parameters[1])
+                str_data.insert(0, self._parameters[0])
+                self._parameters = str_data
             else:
-                str_data.insert(0, self.parameters[0])
-                self.parameters = str_data
-        elif self.command == "PB":
-            str_data.insert(0, self.parameters[0])
-            self.parameters = str_data
+                str_data.insert(0, self._parameters[0])
+                self._parameters = str_data
+        elif self._command == "PB":
+            str_data.insert(0, self._parameters[0])
+            self._parameters = str_data
         else:
-            self.parameters = str_data
+            self._parameters = str_data
 
 
     def copy_from(self, parameter):
@@ -91,7 +91,7 @@ class HpglCommand:
         m = re.findall(HpglCommand.re_patern, string) #regex
         if m is not None:
             res = m[0]
-            self.command = res[0]
+            self._command = res[0]
             li = [*res[1:]] #list umpacken sonst giebt es ein tupel-> schreibgeschützt
             # if li[0] is "": #das muss sein weil sonst bei __init__ gewisse stellen lehr bleiben
             #     li[0] = "0"
@@ -99,10 +99,10 @@ class HpglCommand:
             #     li[1] = "0"
             # elif li[2] is "":
             #     li[2] = "0"
-            self.parameters = li
+            self._parameters = li
 
     def encode(self):
-        return self.command + ",".join(self.parameters) + ";"
+        return self._command + ",".join(self._parameters) + ";"
 
     # def set_offset(self,offset: model_Offset):
     #     HpglCommand.offset = offset
@@ -133,11 +133,12 @@ class Hpgl_structure:
         elif isinstance(commands[0], HpglCommand) and commands[0] is not None:
             self.commands = commands
 
-    def decode(self):
-        m = re.findall(Hpgl_structure.re_patern, self.code) #regex
-        self.commands = []
-        for res in m:
-            self.commands.append(HpglCommand(command=res[0],parameters=res[1:]))
+    def decode(self,data):
+        matches = re.findall(Hpgl_structure.re_patern, data) #regex
+        if len(matches) > 0:
+            self.commands = []
+            for m in matches:
+                self.commands.append(HpglCommand(_command=m[0], _parameters=m[1:]))
 
     def encode(self):
         command: HpglCommand

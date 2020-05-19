@@ -22,6 +22,8 @@ class gui_Schnittparameter(FileHandling):
         self.ui.pushButton_exportieren.clicked.connect(self.pushButton_exportieren)
         self.ui.pushButton_Laden.clicked.connect(self.pushButton_Laden)
         self.ui.buttonBox.accepted.connect(self.accepted)
+        self.ui.buttonBox.rejected.connect(self.rejected)
+
 
 
     def show(self, schnittparameter: model_Schnittparameter.Schnittparameter):
@@ -38,6 +40,12 @@ class gui_Schnittparameter(FileHandling):
         self.update_model()
         # self.schnittparameter.__dict__.update(self.new_schnittparameter.__dict__)
         self.schnittparameter.copy_from(self.new_schnittparameter)
+        self.schnittparameter.custom_schnittparameter = True
+        print("y<sfg")
+
+    def rejected(self):
+        #self.schnittparameter.custom_schnittparameter = False
+        pass
 
     def pushButton_exportieren(self):
         self.update_model()
@@ -63,9 +71,12 @@ class gui_Schnittparameter(FileHandling):
         self.new_schnittparameter.parameter_dict["AS"].set_parameter([self.ui.spinBox_AS_PD.value(),
                                                                       self.ui.spinBox_AS_PU.value()])
 
-        self.new_schnittparameter.parameter_dict["PB2"].set_parameter([1 if self.ui.checkBox_PB2.isChecked() is True else 0])
-        self.new_schnittparameter.parameter_dict["PB4"].set_parameter([1 if self.ui.checkBox_PB4.isChecked() is True else 0])
-        self.new_schnittparameter.parameter_dict["EG"].set_parameter([1 if self.ui.checkBox_EG.isChecked() is True else 0])
+        self.new_schnittparameter.parameter_dict["PB2"].set_parameter(
+            [1 if self.ui.checkBox_PB2.isChecked() is True else 0])
+        self.new_schnittparameter.parameter_dict["PB4"].set_parameter(
+            [1 if self.ui.checkBox_PB4.isChecked() is True else 0])
+        self.new_schnittparameter.parameter_dict["EG"].set_parameter(
+            [1 if self.ui.checkBox_EG.isChecked() is True else 0])
 
         self.new_schnittparameter.parameter_dict["XX13,3"].set_parameter([self.ui.comboBox_XX13_3.currentIndex()])
 

@@ -18,6 +18,7 @@ class Ui_Dialog(object):
         self.buttonBox.setGeometry(QtCore.QRect(20, 790, 521, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.RestoreDefaults|QtWidgets.QDialogButtonBox.Save)
+        self.buttonBox.setCenterButtons(False)
         self.buttonBox.setObjectName("buttonBox")
         self.textEdit_settings = QtWidgets.QTextEdit(Dialog)
         self.textEdit_settings.setGeometry(QtCore.QRect(20, 20, 521, 761))

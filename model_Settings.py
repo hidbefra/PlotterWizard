@@ -1,19 +1,44 @@
+from file_handling import FileHandling
+import my_Json
+import os.path
 
+class Settings(FileHandling):
 
-class Settings:
+    _settings_name = "ZuendWizard.settings"
 
-    def __init__(self, RS232_port=None):
+    def __init__(self):
 
-        if RS232_port is None:
-            self.RS232_port = ""
+        FileHandling.__init__(self, ".settings")
+        self.setings = {}
+        self._setings_file = self.system_path + "\\"+self._settings_name
+
+        if os.path.isfile(self._setings_file):
+            self.load_settings()
         else:
-            self.RS232_port = RS232_port
+            self.restore_default()
+            self.safe_settings()
+        pass
 
-        self.restore_default()
+    def load_settings(self):
+        set = self.open(self._setings_file)
+        self.setings =my_Json.loads(set)
+        pass
+
+    def safe_settings(self):
+        self.safe(self._setings_file,my_Json.dumps(self.setings))
         pass
 
     def restore_default(self):
-        self.RS232_port = "COM3"
+        self.setings = {
+            "RS232 port": "COM3",
+            "baudrate": "19200",
+            "parity": "N",
+            "stopbits": "1",
+            "bytesize": "8",
+            "timeout": "1",
+            "xonxoff": "0",
+            "tscts": "1"
+        }
 
     def copy_from(self, parameter):
         self.__dict__.update(parameter.__dict__)

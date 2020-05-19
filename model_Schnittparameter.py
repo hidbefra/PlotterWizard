@@ -5,13 +5,18 @@ from typing import List
 class Schnittparameter():
     anzahl = 0
 
-    def __init__(self, name=None, parameter_dict=None):
+    def __init__(self, name=None, parameter_dict=None, custom_schnittparameter=None):
         Schnittparameter.anzahl += 1
 
         if name is None:
             self.name = "Schnittparameter" + Schnittparameter.anzahl.__str__()
         else:
             self.name = name
+
+        if custom_schnittparameter is None:
+            self.custom_schnittparameter = False
+        else:
+            self.custom_schnittparameter = custom_schnittparameter
 
         # self.parameter: List[HpglCommand] = []
         # if parameter is None:
@@ -46,7 +51,7 @@ class Schnittparameter():
                 print("le")
                 print(le)
                 ab = HpglCommand(**parameter_dict[le])
-                self.parameter_dict.update({ab.command: ab})
+                self.parameter_dict.update({ab.get_command(): ab})
 
     def add_named_parameter(self, value):
         mod = HpglCommand(code=value)

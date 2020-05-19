@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>370</y>
+     <y>390</y>
      <width>81</width>
      <height>23</height>
     </rect>
@@ -65,24 +65,11 @@
     <string>Bezeichnung</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_Schnittparameter">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>100</y>
-     <width>121</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Schnittparameter</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_Geometrie_anpassen">
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>370</y>
+     <y>390</y>
      <width>131</width>
      <height>23</height>
     </rect>
@@ -95,19 +82,22 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>170</y>
+     <y>100</y>
      <width>401</width>
-     <height>191</height>
+     <height>281</height>
     </rect>
+   </property>
+   <property name="readOnly">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>150</y>
-     <width>47</width>
-     <height>13</height>
+     <y>80</y>
+     <width>61</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
@@ -144,7 +134,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>490</y>
+     <y>500</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -157,7 +147,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>460</y>
+     <y>470</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -167,7 +157,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>460</y>
+     <y>470</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -180,7 +170,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>520</y>
+     <y>530</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -193,7 +183,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>520</y>
+     <y>530</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -206,7 +196,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>490</y>
+     <y>500</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -214,6 +204,35 @@
    <property name="text">
     <string/>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>430</y>
+     <width>254</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton_Schnittparameter">
+      <property name="text">
+       <string>Schnittparameter</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkBox_extract_parameter">
+      <property name="text">
+       <string>aus Geometrie übernehmen</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

@@ -38,15 +38,19 @@ class gui_Arbeitsschrit(FileHandling):
         self.Dialog.exec()
 
     def pushButton_Schnittparameter(self):
-        self.new_arbeitsschritt.decode_schnittparameter()
+        self.update_model()
+        self.new_arbeitsschritt.schnittparameter_decode()
         self.guischnittparameter.show(self.new_arbeitsschritt.schnittparameter)
-        self.new_arbeitsschritt.assigned_new_schnittparameter()
+        self.ui.checkBox_extract_parameter.setChecked(not self.new_arbeitsschritt.schnittparameter.custom_schnittparameter)
 
 
     def accepted(self):
         self.update_model()
         # self.arbeitsschritt.__dict__.update(self.new_arbeitsschritt.__dict__)
         self.arbeitsschritt.copy_from(self.new_arbeitsschritt)
+
+        if not self.ui.checkBox_extract_parameter.isChecked():
+            self.new_arbeitsschritt.assigned_new_schnittparameter()
         pass
 
     def rejected(self):
@@ -65,14 +69,20 @@ class gui_Arbeitsschrit(FileHandling):
     def update_model(self):
         self.new_arbeitsschritt.name = self.ui.lineEdit_bezeichung.text()
         self.new_arbeitsschritt.hpgl_structure.code = self.ui.textBrowser_Geometrie.toPlainText()
+        self.new_arbeitsschritt.schnittparameter.custom_schnittparameter = \
+            0 if self.ui.checkBox_extract_parameter.isChecked() is True else 1
+
+        data = self.ui.textBrowser_Geometrie.toPlainText()
+        self.new_arbeitsschritt.hpgl_structure.decode(data)
 
     def update_gui(self):
         self.ui.lineEdit_bezeichung.setText(self.new_arbeitsschritt.name)
-        self.ui.textBrowser_Geometrie.setText(self.new_arbeitsschritt.hpgl_structure.code)
+        self.ui.textBrowser_Geometrie.setText(self.new_arbeitsschritt.hpgl_structure.encode())
+        self.ui.checkBox_extract_parameter.setChecked(not self.new_arbeitsschritt.schnittparameter.custom_schnittparameter)
 
     def pushButton_Geometrie_Importieren(self):
-        data = self.open_file()
+        data = self.open_with_file_dialog()
         if data is not None:
-            self.new_arbeitsschritt.hpgl_structure.code = data
-            self.new_arbeitsschritt.hpgl_structure.decode()
+            # self.new_arbeitsschritt.hpgl_structure.code = data
+            self.new_arbeitsschritt.hpgl_structure.decode(data)
             self.update_gui()
