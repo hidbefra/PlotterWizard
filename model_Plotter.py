@@ -1,6 +1,9 @@
 import serial #pyserial
 import io
 import Kamera
+import concurrent.futures
+import asyncio
+import time
 
 
 class Plotter:
@@ -10,6 +13,7 @@ class Plotter:
         self.ser = None
         self.sio = None
         self.kamera = None
+        self.hpgl_code=""
 
 
     def __del__(self):
@@ -19,7 +23,7 @@ class Plotter:
         self.ser.close()
         print("COM prot closed")
 
-    def rs232_init(self, port):
+    def init_rs232(self, port):
         self.ser = serial.Serial()
         self.ser.baudrate = 19200
         self.ser.port = port # 'COM4'
@@ -83,13 +87,33 @@ class Plotter:
         self.ser.write("CI{}".format(r*100).encode())
         self.move(x, y)
 
+    def prozess_init(self, hpgl):
+        self.hpgl_code = hpgl
+
+    def _prozess_run(self):
+        for line in "jkhjhljkjlkjgkhj": #self.hpgl_code:
+            print(line)
+            time.sleep(0.1)
+
+    def prozess_start(self):
+        # self._prozess_run()
+        # with concurrent.futures.ThreadPoolExecutor() as executor:
+        #     f1 = executor.submit(self._prozess_run)
+        # task = asyncio.create_task(self._prozess_run())
+        # with concurrent.futures.ProcessPoolExecutor() as executor:
+        #     f1 = executor.submit(self._prozess_run)
+        pass
+
+    def prozess_stop(self):
+        pass
+
 
 
 def einrichten():
     # test mauel einrichten
     pt = Plotter()
     pt.kamera_init(1)
-    pt.rs232_init("COM3")
+    pt.init_rs232("COM3")
     pt.kreis_gravieren(85,200,3)
     pt.move_kamera(85,200)
     pt.kamera.manuel_einrichten()

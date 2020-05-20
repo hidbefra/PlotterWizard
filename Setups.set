@@ -1,0 +1,1084 @@
+{
+    "name": "Setups",
+    "offset": {
+        "x": 0,
+        "y": 0,
+        "phi": 0
+    },
+    "schablonen": [
+        {
+            "name": "Schablone1",
+            "enabled": 2,
+            "offset": {
+                "x": 0,
+                "y": 0,
+                "phi": 0
+            },
+            "prozesse": [
+                {
+                    "name": "Prozess1",
+                    "enabled": 2,
+                    "offset": {
+                        "x": 0,
+                        "y": 0,
+                        "phi": 0
+                    },
+                    "arbeitsschritte": [
+                        {
+                            "name": "Arbeitsschritt1",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter1",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL10;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "10"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "Arbeitsschritt2",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter2",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL20;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "20"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Prozess2",
+                    "enabled": 2,
+                    "offset": {
+                        "x": 0,
+                        "y": 0,
+                        "phi": 0
+                    },
+                    "arbeitsschritte": [
+                        {
+                            "name": "Arbeitsschritt3",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter3",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL30;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "30"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "Arbeitsschritt4",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter4",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL40;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "40"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Schablone2",
+            "enabled": 2,
+            "offset": {
+                "x": 0,
+                "y": 0,
+                "phi": 0
+            },
+            "prozesse": [
+                {
+                    "name": "Prozess3",
+                    "enabled": 2,
+                    "offset": {
+                        "x": 0,
+                        "y": 0,
+                        "phi": 0
+                    },
+                    "arbeitsschritte": [
+                        {
+                            "name": "Arbeitsschritt5",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter5",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL50;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "50"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "Arbeitsschritt6",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter6",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL60;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "60"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Prozess4",
+                    "enabled": 2,
+                    "offset": {
+                        "x": 0,
+                        "y": 0,
+                        "phi": 0
+                    },
+                    "arbeitsschritte": [
+                        {
+                            "name": "Arbeitsschritt7",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter7",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL70;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "70"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "name": "Arbeitsschritt8",
+                            "enabled": 2,
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "phi": 0
+                            },
+                            "schnittparameter": {
+                                "name": "Schnittparameter8",
+                                "custom_schnittparameter": 0,
+                                "parameter_dict": {
+                                    "LL": {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "ML": {
+                                        "_command": "ML",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "LF": {
+                                        "_command": "LF",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VS": {
+                                        "_command": "VS",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "VU": {
+                                        "_command": "VU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "AS": {
+                                        "_command": "AS",
+                                        "_parameters": [
+                                            "0",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "QU": {
+                                        "_command": "QU",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "XX13,3": {
+                                        "_command": "XX",
+                                        "_parameters": [
+                                            "13",
+                                            "3",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB2": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "2",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "PB4": {
+                                        "_command": "PB",
+                                        "_parameters": [
+                                            "4",
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    },
+                                    "EG": {
+                                        "_command": "EG",
+                                        "_parameters": [
+                                            "0"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                }
+                            },
+                            "hpgl_structure": {
+                                "code": "LL80;\n",
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0,
+                                    "phi": 0
+                                },
+                                "commands": [
+                                    {
+                                        "_command": "LL",
+                                        "_parameters": [
+                                            "80"
+                                        ],
+                                        "prefix": null,
+                                        "suffix": null
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

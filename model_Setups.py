@@ -58,9 +58,15 @@ class Setups:
 
         return prozess_list
 
+    def encode(self):
 
-        # for arbeitsschritt_list in prozess_list:
-        #     for arbeitsschritt in arbeitsschritt_list:
-        #         print(arbeitsschritt.hpgl_structure.encode())
-        #
-        # pass
+        hpgl_cod = ""
+        prozess_list = self.reorder()
+
+        for arbeitsschritt_list in prozess_list:
+            for arbeitsschritt in arbeitsschritt_list:
+                hpgl_cod = hpgl_cod + arbeitsschritt.hpgl_structure.encode()
+        return hpgl_cod
+
+
+

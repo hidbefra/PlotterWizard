@@ -4,7 +4,7 @@ import Abstandhalter as ah
 def main():
 
     plotter = pt.Plotter()
-    plotter.rs232_init("COM3")
+    plotter.init_rs232("COM3")
 
     plotter.kamera_init(1)
 

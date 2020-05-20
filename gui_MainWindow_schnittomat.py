@@ -15,6 +15,7 @@ import model_Schablone
 import model_Prozess
 import model_Arbeitsschritt
 import model_Settings
+import model_Plotter
 
 from file_handling import FileHandling
 
@@ -78,6 +79,9 @@ class gui_MainWindow_schnittomat():
 
         self.settings = model_Settings.Settings()
 
+        self.plotter = model_Plotter.Plotter()
+        #self.plotter.init_rs232("COM3")
+
     def update_gui(self):
         self.ui.textEdit_Statu_Meldung.setText(self.status_text)
 
@@ -122,11 +126,15 @@ class gui_MainWindow_schnittomat():
     def pushButton_Start(self):
         self.running = True
 
-        self.prozess_list = self.setups.reorder()
+        # self.prozess_list = self.setups.reorder()
+        #
+        # for arbeitsschritt_list in self.prozess_list:
+        #     for arbeitsschritt in arbeitsschritt_list:
+        #         print(arbeitsschritt.hpgl_structure.encode())
+        #print(self.setups.encode())
+        self.plotter.prozess_init(self.setups.encode())
+        self.plotter.prozess_start()
 
-        for arbeitsschritt_list in self.prozess_list:
-            for arbeitsschritt in arbeitsschritt_list:
-                print(arbeitsschritt.hpgl_structure.encode())
 
     def pushButton_Stop(self):
         self.running = False
