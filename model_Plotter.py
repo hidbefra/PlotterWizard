@@ -4,13 +4,14 @@ import Kamera
 import concurrent.futures
 import asyncio
 import time
+import model_Settings
 from enum import Enum
 
 
 class Plotter:
 
 
-    def __init__(self):
+    def __init__(self, settings: model_Settings.Settings):
         self.ser = serial.Serial()
         self.sio = None
         # self.kamera = None
@@ -18,7 +19,7 @@ class Plotter:
         self.thread: concurrent.futures.Future = None
         self.plotter_running = False
         self.plotter_online = False
-        self.init_rs232('COM3')
+        self.init_rs232(settings)
 
 
     def __del__(self):
@@ -29,22 +30,30 @@ class Plotter:
         print("COM prot closed")
 
 
-    def init_rs232(self, port):
+    def init_rs232(self, settings: model_Settings.Settings):
         # self.ser = serial.Serial()
-        self.ser.baudrate = 19200
-        self.ser.port = port  # 'COM4'
-        self.ser.parity = 'N'
-        self.ser.stopbits = 1
-        self.ser.bytesize = 8
-        self.ser.timeout = 1
-        self.ser.xonxoff = 0
-        self.ser.rtscts = 1
+        self.ser = None
+        self.ser = serial.Serial()
+        self.ser.baudrate = settings.setings["baudrate"]
+        self.ser.port = settings.setings["RS232port"]
+        self.ser.parity = settings.setings["parity"]
+        self.ser.stopbits = settings.setings["stopbits"]
+        self.ser.bytesize = settings.setings["bytesize"]
+        self.ser.timeout = settings.setings["timeout"]
+        self.ser.xonxoff = settings.setings["xonxoff"]
+        self.ser.rtscts = settings.setings["rtscts"]
 
         self.ser.open()
 
         self.sio = io.TextIOWrapper(io.BufferedRWPair(self.ser, self.ser))
 
         print("ser.is_open --> " + str(self.ser.is_open) + " one " + self.ser.name)
+
+    def reinit_rs232(self, settings: model_Settings.Settings):
+        self.ser.close()
+        print("COM prot closed")
+        time.sleep(1)
+        self.init_rs232(settings)
 
     def init_plotter(self):
         self.ser.write(b'\x1b.[ZF5;')  # switch online
@@ -142,7 +151,9 @@ class Plotter:
         while (self.plotter_running):
             self.write_rs232(hpgl_code)
 
-            buffer = ""
+            self.ser.write(b'JB1337;') # use Job Echo um ende des Programs zu markieren
+
+            buffer = "" # auf antwort vom Plotter warten
             while (self.plotter_running):
                 oneByte = self.ser.read(1)
                 if oneByte == b"\r":  # method should returns bytes

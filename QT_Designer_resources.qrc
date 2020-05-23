@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/laser_YXc_icon.ico</file>
     <file>icons/2413.ico</file>
     <file>icons/1959.ico</file>
     <file>icons/1951.ico</file>

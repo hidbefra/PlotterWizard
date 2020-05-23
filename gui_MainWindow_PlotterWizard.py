@@ -79,7 +79,7 @@ class gui_MainWindow_schnittomat():
 
         self.settings = model_Settings.Settings()
 
-        self.plotter = model_Plotter.Plotter()
+        self.plotter = model_Plotter.Plotter(self.settings)
 
     def update_gui(self):
         self.ui.textEdit_Statu_Meldung.setText(self.status_text)
@@ -267,4 +267,6 @@ class gui_MainWindow_schnittomat():
     def actionSettings_clicked(self):
         gui = gui_Sttings.gui_Settings(self.MainWindow, self.settings)
         gui.show()
+        self.pushButton_Stop()
+        self.plotter.reinit_rs232(self.settings)
 

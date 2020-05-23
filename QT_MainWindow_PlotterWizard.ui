@@ -20,7 +20,11 @@
    <enum>Qt::ActionsContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>SchnittOmat</string>
+   <string>PlotterWizard</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="QT_Designer_resources.qrc">
+    <normaloff>:/icons/icons/laser_YXc_icon.ico</normaloff>:/icons/icons/laser_YXc_icon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton_Stop">

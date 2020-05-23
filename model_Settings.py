@@ -30,14 +30,14 @@ class Settings(FileHandling):
 
     def restore_default(self):
         self.setings = {
-            "RS232 port": "COM3",
-            "baudrate": "19200",
+            "RS232port": "COM3",
+            "baudrate": 19200,
             "parity": "N",
-            "stopbits": "1",
-            "bytesize": "8",
-            "timeout": "1",
-            "xonxoff": "0",
-            "tscts": "1"
+            "stopbits": 1,
+            "bytesize": 8,
+            "timeout": 1,
+            "xonxoff": 0,
+            "rtscts": 1
         }
 
     def copy_from(self, parameter):

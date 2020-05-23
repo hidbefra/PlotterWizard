@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'QT_MainWindow_PlotterWizard.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -16,6 +16,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(615, 917)
         MainWindow.setBaseSize(QtCore.QSize(0, 0))
         MainWindow.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/icons/laser_YXc_icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton_Stop = QtWidgets.QPushButton(self.centralwidget)
@@ -74,24 +77,24 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName("toolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.actionnew = QtWidgets.QAction(MainWindow)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/icons/71.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionnew.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/icons/71.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionnew.setIcon(icon1)
         self.actionnew.setObjectName("actionnew")
         self.actionsave = QtWidgets.QAction(MainWindow)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icons/icons/1959.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionsave.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/icons/icons/1959.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionsave.setIcon(icon2)
         self.actionsave.setObjectName("actionsave")
         self.actionopen = QtWidgets.QAction(MainWindow)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/icons/icons/1951.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionopen.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icons/icons/1951.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionopen.setIcon(icon3)
         self.actionopen.setObjectName("actionopen")
         self.actionSettings = QtWidgets.QAction(MainWindow)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/icons/icons/2413.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionSettings.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/icons/icons/2413.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionSettings.setIcon(icon4)
         self.actionSettings.setObjectName("actionSettings")
         self.menutest.addAction(self.actionSettings)
         self.menuDatei.addAction(self.actionopen)
@@ -108,7 +111,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "SchnittOmat"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "PlotterWizard"))
         self.pushButton_Stop.setText(_translate("MainWindow", "Stop"))
         self.pushButton_Start.setText(_translate("MainWindow", "Start"))
         self.treeWidget_Produktion.headerItem().setText(0, _translate("MainWindow", "Setups"))

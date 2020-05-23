@@ -11,4 +11,6 @@ install("PyQt5")
 install("pyqt5-tools")
 install("scipy")
 install("pyserial")
-install("pyinstaller")
+# install("pyinstaller")
+install("https://github.com/pyinstaller/pyinstaller/archive/develop.zip")
+# https://stackoverflow.com/questions/37815371/pyinstaller-failed-to-execute-script-pyi-rth-pkgres-and-missing-packages
