@@ -19,7 +19,7 @@ import model_Plotter
 
 from file_handling import FileHandling
 
-import QT_MainWindow_schnittomat as mw
+import QT_MainWindow_PlotterWizard as mw
 
 
 class gui_MainWindow_schnittomat():
@@ -80,7 +80,6 @@ class gui_MainWindow_schnittomat():
         self.settings = model_Settings.Settings()
 
         self.plotter = model_Plotter.Plotter()
-        #self.plotter.init_rs232("COM3")
 
     def update_gui(self):
         self.ui.textEdit_Statu_Meldung.setText(self.status_text)
@@ -138,6 +137,7 @@ class gui_MainWindow_schnittomat():
 
     def pushButton_Stop(self):
         self.running = False
+        self.plotter.prozess_stop()
         pass
 
     def ondoubleclick(self, previous):

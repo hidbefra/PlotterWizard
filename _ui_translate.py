@@ -3,7 +3,7 @@ import os
 def ui_translate():
     pfad = "venv\\Scripts\\pyuic5.exe"
 
-    os.system(pfad + " -x -o QT_MainWindow_schnittomat.py QT_MainWindow_schnittomat.ui") # gui übersetzten
+    os.system(pfad + " -x -o QT_MainWindow_PlotterWizard.py QT_MainWindow_PlotterWizard.ui") # gui übersetzten
 
     os.system(pfad + " -x -o QT_Arbeitsschritt.py QT_Arbeitsschritt.ui") # gui übersetzten
 

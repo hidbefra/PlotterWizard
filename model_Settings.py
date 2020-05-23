@@ -4,7 +4,7 @@ import os.path
 
 class Settings(FileHandling):
 
-    _settings_name = "ZuendWizard.settings"
+    _settings_name = "PlotterWizard.settings"
 
     def __init__(self):
 

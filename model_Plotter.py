@@ -4,29 +4,35 @@ import Kamera
 import concurrent.futures
 import asyncio
 import time
+from enum import Enum
 
 
 class Plotter:
 
 
     def __init__(self):
-        self.ser = None
+        self.ser = serial.Serial()
         self.sio = None
-        self.kamera = None
-        self.hpgl_code=""
+        # self.kamera = None
+        self.hpgl_code = ""
+        self.thread: concurrent.futures.Future = None
+        self.plotter_running = False
+        self.plotter_online = False
+        self.init_rs232('COM3')
 
 
     def __del__(self):
-        x, y = self.read_pos()
-        print("X = {}, Y = {}".format(x, y))
-        self.ser.write(b'\x1b.[ZF6;')  # switch offline
+        # x, y = self.read_pos()
+        # print("X = {}, Y = {}".format(x, y))
+        # self.ser.write(b'\x1b.[ZF6;')  # switch offline
         self.ser.close()
         print("COM prot closed")
 
+
     def init_rs232(self, port):
-        self.ser = serial.Serial()
+        # self.ser = serial.Serial()
         self.ser.baudrate = 19200
-        self.ser.port = port # 'COM4'
+        self.ser.port = port  # 'COM4'
         self.ser.parity = 'N'
         self.ser.stopbits = 1
         self.ser.bytesize = 8
@@ -40,7 +46,8 @@ class Plotter:
 
         print("ser.is_open --> " + str(self.ser.is_open) + " one " + self.ser.name)
 
-        self.ser.write(b'\x1b.[ZF5;') # switch online
+    def init_plotter(self):
+        self.ser.write(b'\x1b.[ZF5;')  # switch online
 
         self.ser.write(b'OC;')  # position abfragen
         tmp = self.read_rs232()
@@ -51,13 +58,18 @@ class Plotter:
         self.kamera= Kamera.Kamera(device_index)
 
     def read_rs232(self):
+        print("rs232 read")
         buffer = ""
         while True:
             oneByte = self.ser.read(1)
             if oneByte == b"\r":  # method should returns bytes
                 return buffer
             else:
+                # print(oneByte.decode("ascii"))
                 buffer += oneByte.decode("ascii")
+
+    def write_rs232(self,data):
+        self.ser.write(data.encode())
 
     def read_pos(self):
         self.ser.write(b'OC;')  # position abfragen
@@ -90,22 +102,59 @@ class Plotter:
     def prozess_init(self, hpgl):
         self.hpgl_code = hpgl
 
-    def _prozess_run(self):
-        for line in "jkhjhljkjlkjgkhj": #self.hpgl_code:
-            print(line)
-            time.sleep(0.1)
-
     def prozess_start(self):
         # self._prozess_run()
         # with concurrent.futures.ThreadPoolExecutor() as executor:
         #     f1 = executor.submit(self._prozess_run)
+
         # task = asyncio.create_task(self._prozess_run())
+
         # with concurrent.futures.ProcessPoolExecutor() as executor:
-        #     f1 = executor.submit(self._prozess_run)
+        #     f1 = executor.submit(_prozess_run)
+        # pass
+        if not self.plotter_running:
+            print("starte prozess")
+            self.plotter_running = True
+            thread_pool = concurrent.futures.ThreadPoolExecutor()
+            self.thread = thread_pool.submit(self._prozess_run, self.hpgl_code) # start thread
+            # self._prozess_run(self.hpgl_code)
+        else:
+            print("läuft schon")
         pass
 
     def prozess_stop(self):
+
+        if self.plotter_running:
+            self.plotter_running = False
+            time.sleep(1)
+            while(not self.thread.done()):
+                self.ser.cancel_write()
+                self.ser.cancel_read()
+                print("cancel rs232 write")
+                time.sleep(1)
+            print("gestopt")
+
+        else:
+            print("läuft gar nicht")
         pass
+
+    def _prozess_run(self, hpgl_code):
+        while (self.plotter_running):
+            self.write_rs232(hpgl_code)
+
+            buffer = ""
+            while (self.plotter_running):
+                oneByte = self.ser.read(1)
+                if oneByte == b"\r":  # method should returns bytes
+                    break
+                else:
+                    # print(oneByte.decode("ascii"))
+                    buffer += oneByte.decode("ascii")
+            # self.read_pos() # scheint die einfachtste Lösung zu sein um herauszufiden ob das Programm durchgelaufen ist
+            print(buffer)
+        print("prozess abgebrochen")
+        pass
+
 
 
 
@@ -115,7 +164,7 @@ def einrichten():
     pt.kamera_init(1)
     pt.init_rs232("COM3")
     pt.kreis_gravieren(85,200,3)
-    pt.move_kamera(85,200)
+    # pt.move_kamera(85,200)
     pt.kamera.manuel_einrichten()
 
 def move():
