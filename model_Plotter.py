@@ -43,11 +43,14 @@ class Plotter:
         self.ser.xonxoff = settings.setings["xonxoff"]
         self.ser.rtscts = settings.setings["rtscts"]
 
-        self.ser.open()
+        try:
+            self.ser.open()
 
-        self.sio = io.TextIOWrapper(io.BufferedRWPair(self.ser, self.ser))
+            self.sio = io.TextIOWrapper(io.BufferedRWPair(self.ser, self.ser))
 
-        print("ser.is_open --> " + str(self.ser.is_open) + " one " + self.ser.name)
+            print("ser.is_open --> " + str(self.ser.is_open) + " one " + self.ser.name)
+        except:
+            print("Port " + self.ser.name + " kannn nicht geöfnet werden")
 
     def reinit_rs232(self, settings: model_Settings.Settings):
         self.ser.close()
