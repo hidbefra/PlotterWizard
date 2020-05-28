@@ -35,8 +35,6 @@ class Prozess:
         elif isinstance(arbeitsschritte[0], dict):
             self.arbeitsschritte = []
             for le in arbeitsschritte:
-                print("le")
-                print(le)
                 ab = model_Arbeitsschritt.Arbeitsschritt(**le)
                 self.arbeitsschritte.append(ab)
         elif isinstance(arbeitsschritte[0], model_Arbeitsschritt.Arbeitsschritt) and arbeitsschritte[0] is not None:

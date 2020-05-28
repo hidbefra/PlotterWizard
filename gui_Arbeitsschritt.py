@@ -58,10 +58,10 @@ class gui_Arbeitsschrit(FileHandling):
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_json_file(self.new_arbeitsschritt, self.new_arbeitsschritt.name)
+        self.export_file(self.new_arbeitsschritt, self.new_arbeitsschritt.name)
 
     def pushButton_Laden(self):
-        data = self.open_json_file()
+        data = self.import_file()
         if data is not None:
             self.new_arbeitsschritt.__init__(**data)
         self.update_gui()
@@ -75,10 +75,19 @@ class gui_Arbeitsschrit(FileHandling):
         data = self.ui.textBrowser_Geometrie.toPlainText()
         self.new_arbeitsschritt.hpgl_structure.decode(data)
 
+        self.new_arbeitsschritt.offset.dx = self.ui.doubleSpinBox_offset_x.value()
+        self.new_arbeitsschritt.offset.dy = self.ui.doubleSpinBox_offset_y.value()
+        self.new_arbeitsschritt.offset.phi = self.ui.doubleSpinBox_offset_phi.value()
+
+
     def update_gui(self):
         self.ui.lineEdit_bezeichung.setText(self.new_arbeitsschritt.name)
         self.ui.textBrowser_Geometrie.setText(self.new_arbeitsschritt.hpgl_structure.encode())
         self.ui.checkBox_extract_parameter.setChecked(not self.new_arbeitsschritt.schnittparameter.custom_schnittparameter)
+
+        self.ui.doubleSpinBox_offset_x.setValue(self.new_arbeitsschritt.offset.dx)
+        self.ui.doubleSpinBox_offset_y.setValue(self.new_arbeitsschritt.offset.dy)
+        self.ui.doubleSpinBox_offset_phi.setValue(self.new_arbeitsschritt.offset.phi)
 
     def pushButton_Geometrie_Importieren(self):
         data = self.open_with_file_dialog()

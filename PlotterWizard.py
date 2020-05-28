@@ -7,13 +7,9 @@ import file_handling
 
 def main():
 
-    file_handling.FileHandling.system_path = os.path.dirname(os.path.realpath(__file__))
-    file_handling.FileHandling.last_path = os.environ["HOMEPATH"] + "\\Desktop"
-
-
     app = QtWidgets.QApplication(sys.argv)
 
-    MainWindow_schnittomat = gui_MainWindow_PlotterWizard.gui_MainWindow_schnittomat()
+    MainWindow_schnittomat = gui_MainWindow_PlotterWizard.gui_MainWindow_PlotterWizard()
     MainWindow_schnittomat.show()
 
     sys.exit(app.exec_())

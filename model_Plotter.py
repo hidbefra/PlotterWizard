@@ -34,14 +34,14 @@ class Plotter:
         # self.ser = serial.Serial()
         self.ser = None
         self.ser = serial.Serial()
-        self.ser.baudrate = settings.setings["baudrate"]
-        self.ser.port = settings.setings["RS232port"]
-        self.ser.parity = settings.setings["parity"]
-        self.ser.stopbits = settings.setings["stopbits"]
-        self.ser.bytesize = settings.setings["bytesize"]
-        self.ser.timeout = settings.setings["timeout"]
-        self.ser.xonxoff = settings.setings["xonxoff"]
-        self.ser.rtscts = settings.setings["rtscts"]
+        self.ser.baudrate = settings.setings["com_port"]["baudrate"]
+        self.ser.port = settings.setings["com_port"]["RS232port"]
+        self.ser.parity = settings.setings["com_port"]["parity"]
+        self.ser.stopbits = settings.setings["com_port"]["stopbits"]
+        self.ser.bytesize = settings.setings["com_port"]["bytesize"]
+        self.ser.timeout = settings.setings["com_port"]["timeout"]
+        self.ser.xonxoff = settings.setings["com_port"]["xonxoff"]
+        self.ser.rtscts = settings.setings["com_port"]["rtscts"]
 
         try:
             self.ser.open()

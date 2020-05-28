@@ -29,7 +29,7 @@ class Settings(FileHandling):
         pass
 
     def restore_default(self):
-        self.setings = {
+        com_port = {
             "RS232port": "COM3",
             "baudrate": 19200,
             "parity": "N",
@@ -38,6 +38,15 @@ class Settings(FileHandling):
             "timeout": 1,
             "xonxoff": 0,
             "rtscts": 1
+        }
+
+        ablage = {
+            "Pfad Programme": os.environ["HOMEPATH"] + "\\Desktop"
+        }
+
+        self.setings = {
+            "com_port": com_port,
+            "ablage": ablage
         }
 
     def copy_from(self, parameter):

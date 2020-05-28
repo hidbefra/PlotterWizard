@@ -41,13 +41,15 @@ class Arbeitsschritt:
 
     def schnittparameter_decode(self): # suche nach den schnittparameter im HPGL cod
         for key in self.schnittparameter.parameter_dict:
-            # self.schnittparameter.parameter_dict[key] = self.hpgl_structure.get_first_of(HpglCommand(code=key))
             self.schnittparameter.parameter_dict[key] = self.hpgl_structure.get_first_of(self.schnittparameter.parameter_dict[key])
         pass
 
     def assigned_new_schnittparameter(self):
         for key in self.schnittparameter.parameter_dict:
             self.hpgl_structure.replace_all_command_with(self.schnittparameter.parameter_dict[key])
+
+    def assign_correction(self):
+        self.hpgl_structure.assign_correction(self.offset)
 
     def copy_from(self, parameter):
         self.__dict__.update(parameter.__dict__)

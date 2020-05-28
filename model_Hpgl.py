@@ -7,10 +7,24 @@ import copy
 class HpglCommand:
 
     # offset: model_Offset = None
-    re_patern = "([A-Z]{2})([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?"
-    datatyp_dict = {"LL": float, "ML": float, "LF": int, "VS": float, "VU": float, "AS": int,
-                    "QU": int, "XX": int, "PB": int, "EG": int, "PB": int, "PU": int,
-                    "AA": [int, int, float], "SZ": float, "PW": float}
+    re_patern = "([A-Z]{2})([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?"
+    # re_patern = "([A-Z]{2})(?:([-\d.]+)(?:,|;))+"
+    datatyp_dict = {"LL": [float],
+                    "ML": [float],
+                    "LF": [int],
+                    "VS": [float, float],
+                    "VU": [float],
+                    "AS": [int, int],
+                    "QU": [int],
+                    "XX": [int, int, int, int],
+                    "PB": [int, int, int],
+                    "EG": [int],
+                    "PU": [int,int],
+                    "PD": [int,int],
+                    "PR": [int, int],
+                    "AA": [int, int, float],
+                    "SZ": [float,float],
+                    "PW": [int, int, int, int, int, int]}
 
     def __init__(self, _command="", _parameters=[], prefix=None, suffix=None, code=None):
         self._command = _command
@@ -58,14 +72,26 @@ class HpglCommand:
             if self._command in HpglCommand.datatyp_dict:
                 this_typ = HpglCommand.datatyp_dict[self._command]
             else:
-                this_typ = str
+                this_typ = [str, str, str, str, str, str]
 
-        if this_typ is int:
-            return [int(x) if x is not "" else x for x in ret]
-        elif this_typ is str:
-            return [str(x) if x is not "" else x for x in ret]
-        elif this_typ is float:
-            return [float(x) if x is not "" else x for x in ret]
+        liste = []
+        for val, type in zip(ret, this_typ):
+            if type is int:
+                liste.append(int(val))
+            elif type is str:
+                liste.append(str(val))
+            elif type is float:
+                liste.append(float(val))
+        return liste
+
+
+        # if this_typ is int:
+        #     return [int(x) if x is not "" else x for x in ret]
+        # elif this_typ is str:
+        #     return [str(x) if x is not "" else x for x in ret]
+        # elif this_typ is float:
+        #     return [float(x) if x is not "" else x for x in ret]
+
 
     def set_parameter(self,data):
         str_data = [str(x) if x is not "" else x for x in data]
@@ -104,13 +130,17 @@ class HpglCommand:
     def encode(self):
         return self._command + ",".join(self._parameters) + ";"
 
-    # def set_offset(self,offset: model_Offset):
-    #     HpglCommand.offset = offset
+    def assign_correction(self,offset: model_Offset):
+        print(offset)
+
+        pass
+
 
 
 class Hpgl_structure:
 
-    re_patern= "([A-Z]{2})([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?"
+    re_patern= "([A-Z]{2})([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?([-\d.]+)?[,;]?"
+    # re_patern = "([A-Z]{2})(?:([-\d.]+)(?:,|;))+"
 
     def __init__(self, code="", offset=None, commands=None):
 
@@ -161,6 +191,18 @@ class Hpgl_structure:
         for coammand in self.commands:
             if coammand.get_command() == data.get_command():
                 coammand.copy_from(data)
+
+    def assign_correction(self,offset: model_Offset.Offset):
+        command_list = ["AA","PA","PD","PR","PU"]
+        coammand: HpglCommand
+        for coammand in self.commands:
+            if coammand.get_command() in command_list:
+                nx, ny =offset.assign_offset(coammand.get_parameters()[0]/100,
+                                             coammand.get_parameters()[1]/100)
+                # print(f"{coammand.get_command()} {int(nx*100)}, {int(ny*100)}")
+                coammand.get_parameters()[0] = int(nx*100)
+                coammand.get_parameters()[1] = int(ny*100)
+        pass
 
 
 if __name__ == "__main__":

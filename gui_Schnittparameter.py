@@ -24,6 +24,10 @@ class gui_Schnittparameter(FileHandling):
         self.ui.buttonBox.accepted.connect(self.accepted)
         self.ui.buttonBox.rejected.connect(self.rejected)
 
+        self.Dialog.setFixedSize(self.Dialog.sizeHint())
+
+
+
 
 
     def show(self, schnittparameter: model_Schnittparameter.Schnittparameter):
@@ -41,7 +45,6 @@ class gui_Schnittparameter(FileHandling):
         # self.schnittparameter.__dict__.update(self.new_schnittparameter.__dict__)
         self.schnittparameter.copy_from(self.new_schnittparameter)
         self.schnittparameter.custom_schnittparameter = True
-        print("y<sfg")
 
     def rejected(self):
         #self.schnittparameter.custom_schnittparameter = False
@@ -49,11 +52,11 @@ class gui_Schnittparameter(FileHandling):
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_json_file(self.new_schnittparameter, self.new_schnittparameter.name)
+        self.export_file(self.new_schnittparameter, self.new_schnittparameter.name)
 
     def pushButton_Laden(self):
-        data = self.open_json_file()
-        print (data)
+        data = self.import_file()
+        # print (data)
         if data is not None:
             self.new_schnittparameter.__init__(**data)
         self.update_gui()

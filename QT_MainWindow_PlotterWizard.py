@@ -112,10 +112,13 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap(":/icons/icons/2413.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionSettings.setIcon(icon4)
         self.actionSettings.setObjectName("actionSettings")
+        self.actionsave_as = QtWidgets.QAction(MainWindow)
+        self.actionsave_as.setObjectName("actionsave_as")
         self.menutest.addAction(self.actionSettings)
         self.menuDatei.addAction(self.actionopen)
         self.menuDatei.addAction(self.actionnew)
         self.menuDatei.addAction(self.actionsave)
+        self.menuDatei.addAction(self.actionsave_as)
         self.menubar.addAction(self.menuDatei.menuAction())
         self.menubar.addAction(self.menutest.menuAction())
         self.toolBar.addAction(self.actionopen)
@@ -148,6 +151,7 @@ class Ui_MainWindow(object):
         self.actionsave.setText(_translate("MainWindow", "save"))
         self.actionopen.setText(_translate("MainWindow", "open"))
         self.actionSettings.setText(_translate("MainWindow", "Settings"))
+        self.actionsave_as.setText(_translate("MainWindow", "save as.."))
 import QT_Designer_resources_rc
 
 

@@ -22,6 +22,8 @@ class gui_Schablone(FileHandling):
         self.ui.pushButton_Laden.clicked.connect(self.pushButton_Laden)
         self.ui.pushButton_exportieren.clicked.connect(self.pushButton_exportieren)
 
+        self.Dialog.setFixedSize(self.Dialog.sizeHint())
+
     # def show(self, schablone: model_Schablone.Schablone):
     #     self.ui.lineEdit_Bezeichung.setText(schablone.name)
     #     self.schablone = schablone
@@ -49,7 +51,7 @@ class gui_Schablone(FileHandling):
 
 
     def pushButton_Laden(self):
-        data = self.open_json_file()
+        data = self.import_file()
         if data is not None:
             self.new_schablone.__init__(**data)
         self.update_gui()
@@ -57,7 +59,7 @@ class gui_Schablone(FileHandling):
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_json_file(self.new_schablone, self.new_schablone.name)
+        self.export_file(self.new_schablone, self.new_schablone.name)
 
 
     def accepted(self):
@@ -72,6 +74,14 @@ class gui_Schablone(FileHandling):
     def update_model(self):
         self.new_schablone.name = self.ui.lineEdit_bezeichung.text()
 
+        self.new_schablone.offset.dx = self.ui.doubleSpinBox_offset_x.value()
+        self.new_schablone.offset.dy = self.ui.doubleSpinBox_offset_y.value()
+        self.new_schablone.offset.phi = self.ui.doubleSpinBox_offset_phi.value()
+
 
     def update_gui(self):
         self.ui.lineEdit_bezeichung.setText(self.new_schablone.name)
+
+        self.ui.doubleSpinBox_offset_x.setValue(self.new_schablone.offset.dx)
+        self.ui.doubleSpinBox_offset_y.setValue(self.new_schablone.offset.dy)
+        self.ui.doubleSpinBox_offset_phi.setValue(self.new_schablone.offset.phi)

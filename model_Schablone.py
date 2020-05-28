@@ -43,8 +43,6 @@ class Schablone:
         elif isinstance(prozesse[0], dict):
             self.prozesse = []
             for le in prozesse:
-                print("le")
-                print(le)
                 ab = model_Prozess.Prozess(**le)
                 self.prozesse.append(ab)
         elif isinstance(prozesse[0], model_Prozess.Prozess) and prozesse[0] is not None:

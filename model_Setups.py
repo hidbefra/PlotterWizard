@@ -3,6 +3,8 @@ from typing import List
 import model_Offset
 import my_QTreeWidgetItem
 import model_Prozess
+import  model_Arbeitsschritt
+import copy
 
 
 class Setups:
@@ -30,8 +32,6 @@ class Setups:
         elif isinstance(schablonen[0], dict):
             self.schablonen = []
             for le in schablonen:
-                print("le")
-                print(le)
                 ab = model_Schablone.Schablone(**le)
                 self.schablonen.append(ab)
         elif isinstance(schablonen[0], model_Schablone.Schablone) and schablonen[0] is not None:
@@ -41,21 +41,30 @@ class Setups:
         self.__dict__.update(parameter.__dict__)
 
     def reorder(self):
-        prozess_list = []
-
+        prozess_list: List[model_Prozess.Prozess] = []
         # neu ordnen. von jeder Schablone den ersten Prozess dan von jeder Schablone den zweiten Prozess usw.
         schabloneposition = 0
         for schablone in self.schablonen:
             insertposition = schabloneposition
             schritt = schabloneposition + 1
+            schablone_offset = schablone.offset
             for prozess in schablone.prozesse:
+                prozess_offset = prozess.offset
                 arbeitsschritt_list=[]
                 for arbeitsschritt in prozess.arbeitsschritte:
-                    arbeitsschritt_list.append(arbeitsschritt)
+                    next_arbeitsschritt: model_Arbeitsschritt.Arbeitsschritt = copy.deepcopy(arbeitsschritt)
+
+                    next_arbeitsschritt.offset.add(self.offset) #Setup offset
+                    next_arbeitsschritt.offset.add(schablone_offset)
+                    next_arbeitsschritt.offset.add(prozess_offset)
+
+                    arbeitsschritt_list.append(next_arbeitsschritt)
+
                 prozess_list.insert(insertposition,arbeitsschritt_list)
                 insertposition = insertposition + schritt
             schabloneposition +=1
 
+        prozess_list[0][0].offset.add(model_Offset.Offset(1,2,3))
         return prozess_list
 
     def encode(self):
@@ -65,6 +74,7 @@ class Setups:
 
         for arbeitsschritt_list in prozess_list:
             for arbeitsschritt in arbeitsschritt_list:
+                arbeitsschritt.assign_correction()
                 hpgl_cod = hpgl_cod + arbeitsschritt.hpgl_structure.encode()
         return hpgl_cod
 

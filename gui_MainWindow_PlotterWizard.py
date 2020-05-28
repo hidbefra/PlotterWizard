@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 from itertools import cycle
+import os
 
 import gui_Arbeitsschritt
 import gui_Schablone
@@ -22,7 +23,7 @@ from file_handling import FileHandling
 import QT_MainWindow_PlotterWizard as mw
 
 
-class gui_MainWindow_schnittomat():
+class gui_MainWindow_PlotterWizard():
 
     def __init__(self):
         self.MainWindow = QtWidgets.QMainWindow()
@@ -46,6 +47,7 @@ class gui_MainWindow_schnittomat():
         self.ui.actionnew.triggered.connect(self.actionnew_clicked)
         self.ui.actionsave.triggered.connect(self.actionsave_clicked)
         self.ui.actionSettings.triggered.connect(self.actionSettings_clicked)
+        self.ui.actionsave_as.triggered.connect(self.actionsave_as_clicked)
 
         self.treeWidget_Produktion_head: QtWidgets.QHeaderView = self.ui.treeWidget_Produktion.header()
         self.treeWidget_Produktion_head.setSectionsClickable(True)
@@ -77,7 +79,9 @@ class gui_MainWindow_schnittomat():
         self.status_text = ""
         self.update_gui()
 
+        FileHandling.system_path = os.path.dirname(os.path.realpath(__file__))
         self.settings = model_Settings.Settings()
+        FileHandling.last_path = self.settings.setings["ablage"]["Pfad Programme"]
 
         self.plotter = model_Plotter.Plotter(self.settings)
 
@@ -124,13 +128,6 @@ class gui_MainWindow_schnittomat():
 
     def pushButton_Start(self):
         self.running = True
-
-        # self.prozess_list = self.setups.reorder()
-        #
-        # for arbeitsschritt_list in self.prozess_list:
-        #     for arbeitsschritt in arbeitsschritt_list:
-        #         print(arbeitsschritt.hpgl_structure.encode())
-        #print(self.setups.encode())
         self.plotter.prozess_init(self.setups.encode())
         self.plotter.prozess_start()
 
@@ -145,12 +142,8 @@ class gui_MainWindow_schnittomat():
 
     def treeWidget_Produktion_clicked(self, event):
         self.ui.treeWidget_Produktion.clearSelection()
-        print("item_clicked")
-        print(event)
 
     def treeWidget_Produktion_itemChanged(self, event: my_QTreeWidgetItem.my_QTreeWidgetItem):
-        print("item_Changed")
-        print(event.checkState(0))
         event.modul.enabled = event.checkState(0)
 
     def treeWidget_Produktion_head_DoubleClicked(self, evebt):
@@ -158,37 +151,29 @@ class gui_MainWindow_schnittomat():
 
     def edit_modul(self, modul):
         if type(modul) is model_Schablone.Schablone:
-            print("EditContent für SChablone")
             self.guiSchablone.show(modul)
 
         if type(modul) is model_Prozess.Prozess:
-            print("EditContent für Prozess")
             self.guiProzess.show(modul)
 
         if type(modul) is model_Arbeitsschritt.Arbeitsschritt:
-            print("EditContent für Arbeitsschritt")
             self.guiArbeitsschritt.show(modul)
 
         if modul is None:
-            print("EditContent für Setup")
             self.guiSetups.show(self.setups)
 
         self.update_TreeWidget()
 
     def add_modul(self, modul):
-        print(modul)
         if type(modul) is model_Schablone.Schablone:
             md: model_Schablone.Schablone = modul
             md.prozesse.append(model_Prozess.Prozess())
-            print("EditContent für SChablone")
 
         if type(modul) is model_Prozess.Prozess:
-            print("EditContent für Prozess")
             md: model_Prozess.Prozess = modul
             md.arbeitsschritte.append(model_Arbeitsschritt.Arbeitsschritt())
 
         if modul is None:
-            print("EditContent für Setup")
             self.setups.schablonen.append(model_Schablone.Schablone())
 
         self.update_TreeWidget()
@@ -196,20 +181,14 @@ class gui_MainWindow_schnittomat():
     def delete_modul(self, modul):
         if type(modul) is model_Schablone.Schablone:
             md: model_Schablone.Schablone = modul
-            # print("delete " + md.name)
-            # self.Setups.Schablonen.remove(md)
             self.parents[id(md)].remove(md)
 
         if type(modul) is model_Prozess.Prozess:
             md: model_Prozess.Prozess = modul
-            # print("delete " + md.name)
-            # md.parent.Prozesse.remove(md)
             self.parents[id(md)].remove(md)
 
         if type(modul) is model_Arbeitsschritt.Arbeitsschritt:
             md: model_Arbeitsschritt.Arbeitsschritt = modul
-            # print("delete " + md.name)
-            # md.parent.Arbeitsschritte.remove(md)
             self.parents[id(md)].remove(md)
 
         self.update_TreeWidget()
@@ -252,17 +231,21 @@ class gui_MainWindow_schnittomat():
             self.edit_modul(None)
 
     def actionOpen_clicked(self):
-        data = self.filehandeling.open_json_file()
+        data = self.filehandeling.open_projekt(self.settings.setings["ablage"]["Pfad Programme"])
         if data is not None:
             self.setups.__init__(**data)
         self.update_TreeWidget()
 
     def actionnew_clicked(self):
+        FileHandling.path_of_open_projekt = None
         self.setups = model_Setups.Setups()
         self.update_TreeWidget()
 
     def actionsave_clicked(self):
-        self.filehandeling.safe_json_file(self.setups, self.setups.name)
+        self.filehandeling.safe_projekt(self.setups, self.setups.name)
+
+    def actionsave_as_clicked(self):
+        self.filehandeling.safe_projekt_as(self.setups, self.setups.name)
 
     def actionSettings_clicked(self):
         gui = gui_Sttings.gui_Settings(self.MainWindow, self.settings)

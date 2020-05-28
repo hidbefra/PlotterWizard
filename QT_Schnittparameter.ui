@@ -6,447 +6,329 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>402</width>
-    <height>664</height>
+    <width>392</width>
+    <height>518</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Schnittparamteter</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>610</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>60</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>LL Laser Power %</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>110</y>
-     <width>131</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ML minimal Laser Power %</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>160</y>
-     <width>121</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>LF Laser Frequency [HZ]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>60</y>
-     <width>121</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>VS Velocity select [cm/s]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>110</y>
-     <width>111</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>VU Velocity UP [cm/s]</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>160</y>
-     <width>161</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>AS PU Acceleration select</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>210</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>QU Quality</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_AS_PU">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>180</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>4</number>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_QU">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>230</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>3</number>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBox_XX13_3">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>290</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <property name="text">
-     <string>Unten</string>
-    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="0" colspan="3">
+      <widget class="QLineEdit" name="lineEdit_bezeichung"/>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>LL Laser Power %</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>VS Velocity select [cm/s]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_LL">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>100.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_VS">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>100.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0" colspan="2">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>ML minimal Laser Power %</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>VU Velocity UP [cm/s]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0" colspan="2">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_ML">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>100.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="QDoubleSpinBox" name="doubleSpinBox_VU">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>100.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0" colspan="2">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>LF Laser Frequency [HZ]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="2">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>AS PU Acceleration select</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0" colspan="2">
+      <widget class="QSpinBox" name="spinBox_LF">
+       <property name="maximum">
+        <number>20000</number>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2">
+      <widget class="QSpinBox" name="spinBox_AS_PU">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>4</number>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0" colspan="2">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>QU Quality</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="2">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>AS PD Acceleration select</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QSpinBox" name="spinBox_QU">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>3</number>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="2">
+      <widget class="QSpinBox" name="spinBox_AS_PD">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>4</number>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0" colspan="2">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>XX13,3 Z Achse bei PD</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="2">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Wartezeit Z Achse [1/100 s]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0" colspan="2">
+      <widget class="QComboBox" name="comboBox_XX13_3">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Unten</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Oben</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="12" column="2">
+      <widget class="QSpinBox" name="spinBox_Z_Achse_delay"/>
+     </item>
+     <item row="13" column="0" colspan="2">
+      <widget class="QCheckBox" name="checkBox_Z_Achse_hoch_bei_PU">
+       <property name="text">
+        <string>Z Achse bei PU immer hochfahren</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="2">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Minimum</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>183</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="14" column="0" colspan="2">
+      <widget class="QCheckBox" name="checkBox_PB2">
+       <property name="text">
+        <string>PB2 Vacuum</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="2">
+      <widget class="QCheckBox" name="checkBox_PB4">
+       <property name="text">
+        <string>PB4 Vacuum cleaner</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="0" colspan="2">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Einschaltdauer Vacuum [1/100 s]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="0" colspan="2">
+      <widget class="QSpinBox" name="spinBox_EinschaltdauerVacuum"/>
+     </item>
+     <item row="17" column="0" colspan="2">
+      <widget class="QCheckBox" name="checkBox_EG">
+       <property name="text">
+        <string>EG External Gas</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="3">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="0" colspan="3">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Bezeichnung</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
-    <property name="text">
-     <string>Oben</string>
-    </property>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>270</y>
-     <width>121</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>XX13,3 Z Achse bei PD</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_EinschaltdauerVacuum">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>450</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>330</y>
-     <width>161</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Wartezeit Z Achse [1/100 s]</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_Z_Achse_delay">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>350</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_13">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>430</y>
-     <width>161</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Einschaltdauer Vacuum [1/100 s]</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_Laden">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>590</y>
-     <width>101</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>importieren</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_exportieren">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>620</y>
-     <width>101</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>exportieren</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>71</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Bezeichnung</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_bezeichung">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>301</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox_LL">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>80</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="decimals">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <double>100.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox_ML">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>130</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="decimals">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <double>100.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_LF">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>180</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maximum">
-    <number>20000</number>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox_VU">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>130</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="decimals">
-    <number>1</number>
-   </property>
-   <property name="minimum">
-    <double>0.100000000000000</double>
-   </property>
-   <property name="maximum">
-    <double>100.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox_VS">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>80</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="decimals">
-    <number>1</number>
-   </property>
-   <property name="minimum">
-    <double>0.100000000000000</double>
-   </property>
-   <property name="maximum">
-    <double>100.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_Z_Achse_hoch_bei_PU">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>400</y>
-     <width>191</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Z Achse bei PU immer hochfahren</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_PB2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>450</y>
-     <width>81</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PB2 Vacuum</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_PB4">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>490</y>
-     <width>121</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PB4 Vacuum cleaner</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="checkBox_EG">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>530</y>
-     <width>111</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>EG External Gas</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_AS_PD">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>230</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>4</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>210</y>
-     <width>161</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>AS PD Acceleration select</string>
-   </property>
-  </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_13">
+       <item>
+        <widget class="QPushButton" name="pushButton_Laden">
+         <property name="text">
+          <string>importieren</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_exportieren">
+         <property name="text">
+          <string>exportieren</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>

@@ -48,8 +48,6 @@ class Schnittparameter():
         elif isinstance(parameter_dict, dict):
             self.parameter_dict = {}
             for le in parameter_dict:
-                print("le")
-                print(le)
                 ab = HpglCommand(**parameter_dict[le])
                 self.parameter_dict.update({ab.get_command(): ab})
 

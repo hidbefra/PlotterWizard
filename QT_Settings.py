@@ -13,16 +13,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(556, 826)
+        Dialog.resize(269, 413)
+        self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.textEdit_settings = QtWidgets.QTextEdit(Dialog)
+        self.textEdit_settings.setObjectName("textEdit_settings")
+        self.verticalLayout.addWidget(self.textEdit_settings)
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox.setGeometry(QtCore.QRect(20, 790, 521, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.RestoreDefaults|QtWidgets.QDialogButtonBox.Save)
         self.buttonBox.setCenterButtons(False)
         self.buttonBox.setObjectName("buttonBox")
-        self.textEdit_settings = QtWidgets.QTextEdit(Dialog)
-        self.textEdit_settings.setGeometry(QtCore.QRect(20, 20, 521, 761))
-        self.textEdit_settings.setObjectName("textEdit_settings")
+        self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)

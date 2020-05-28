@@ -24,6 +24,8 @@ class gui_Setups(FileHandling):
         self.ui.pushButton_Laden.clicked.connect(self.pushButton_Laden)
         self.ui.pushButton_exportieren.clicked.connect(self.pushButton_exportieren)
 
+        self.Dialog.setFixedSize(self.Dialog.sizeHint())
+
     # def show(self, setups: model_Setups.Setups):
     #     self.ui.lineEdit_bezeichung.setText(setups.name)
     #     self.Setups = setups
@@ -47,14 +49,14 @@ class gui_Setups(FileHandling):
         self.Dialog.exec()
 
     def pushButton_Laden(self):
-        data = self.open_json_file()
+        data = self.import_file()
         if data is not None:
             self.new_setups.__init__(**data)
         self.update_gui()
 
     def pushButton_exportieren(self):
         self.update_model()
-        self.safe_json_file(self.new_setups, self.new_setups.name)
+        self.export_file(self.new_setups, self.new_setups.name)
 
     def accepted(self):
         self.update_model()
@@ -67,5 +69,13 @@ class gui_Setups(FileHandling):
     def update_model(self):
         self.new_setups.name = self.ui.lineEdit_bezeichung.text()
 
+        self.new_setups.offset.dx = self.ui.doubleSpinBox_offset_x.value()
+        self.new_setups.offset.dy = self.ui.doubleSpinBox_offset_y.value()
+        self.new_setups.offset.phi = self.ui.doubleSpinBox_offset_phi.value()
+
     def update_gui(self):
         self.ui.lineEdit_bezeichung.setText(self.new_setups.name)
+
+        self.ui.doubleSpinBox_offset_x.setValue(self.new_setups.offset.dx)
+        self.ui.doubleSpinBox_offset_y.setValue(self.new_setups.offset.dy)
+        self.ui.doubleSpinBox_offset_phi.setValue(self.new_setups.offset.phi)

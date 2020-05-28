@@ -223,6 +223,7 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionopen"/>
     <addaction name="actionnew"/>
     <addaction name="actionsave"/>
+    <addaction name="actionsave_as"/>
    </widget>
    <addaction name="menuDatei"/>
    <addaction name="menutest"/>
@@ -276,6 +277,11 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionsave_as">
+   <property name="text">
+    <string>save as..</string>
    </property>
   </action>
  </widget>
