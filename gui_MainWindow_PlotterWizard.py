@@ -79,7 +79,7 @@ class gui_MainWindow_PlotterWizard():
         self.status_text = ""
         self.update_gui()
 
-        FileHandling.system_path = os.path.dirname(os.path.realpath(__file__))
+        FileHandling.system_path = os.path.dirname(sys.argv[0]) # os.path.dirname(os.path.realpath(__file__))
         self.settings = model_Settings.Settings()
         FileHandling.last_path = self.settings.setings["ablage"]["Pfad Programme"]
 

@@ -19,17 +19,11 @@ class gui_Settings():
         self.ui.buttonBox.rejected.connect(self.rejected)
         self.ui.buttonBox.button(QtWidgets.QDialogButtonBox.RestoreDefaults).clicked.connect(self.restore_default)
 
-
-
-
-
     def show(self):
-
         self.update_gui()
 
         self.Dialog.show()
         self.Dialog.exec()
-
 
     def update_gui(self):
         self.ui.textEdit_settings.setText(my_Json.dumps(self.settings.setings))

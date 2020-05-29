@@ -26,6 +26,7 @@ class Settings(FileHandling):
 
     def safe_settings(self):
         self.safe(self._setings_file,my_Json.dumps(self.setings))
+        print(f"setting gespeichert: {self._setings_file}")
         pass
 
     def restore_default(self):
