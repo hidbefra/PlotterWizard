@@ -22,6 +22,9 @@ from file_handling import FileHandling
 
 import QT_MainWindow_PlotterWizard as mw
 
+from status_text import status_text
+
+
 
 class gui_MainWindow_PlotterWizard():
 
@@ -76,17 +79,25 @@ class gui_MainWindow_PlotterWizard():
 
         self.update_TreeWidget()
 
-        self.status_text = ""
-        self.update_gui()
-
         FileHandling.system_path = os.path.dirname(sys.argv[0]) # os.path.dirname(os.path.realpath(__file__))
         self.settings = model_Settings.Settings()
         FileHandling.last_path = self.settings.setings["ablage"]["Pfad Programme"]
 
+        self.plotter: model_Plotter.Plotter
+
+        #self.status_text = ""
+        self.update_gui()
+
+    def conact_Plotter(self):
         self.plotter = model_Plotter.Plotter(self.settings)
 
     def update_gui(self):
-        self.ui.textEdit_Statu_Meldung.setText(self.status_text)
+        pass
+
+    def update_status_Text(self):
+        self.ui.textEdit_Statu_Meldung.setText(status_text.text)
+        self.ui.textEdit_Statu_Meldung.moveCursor(QtGui.QTextCursor.End)
+
 
     def update_TreeWidget(self):
 
@@ -126,15 +137,17 @@ class gui_MainWindow_PlotterWizard():
     def show(self):
         self.MainWindow.show()
 
+
     def pushButton_Start(self):
         self.running = True
         self.plotter.prozess_init(self.setups.encode())
         self.plotter.prozess_start()
-
+        self.update_gui()
 
     def pushButton_Stop(self):
         self.running = False
         self.plotter.prozess_stop()
+        self.update_gui()
         pass
 
     def ondoubleclick(self, previous):
@@ -193,11 +206,62 @@ class gui_MainWindow_PlotterWizard():
 
         self.update_TreeWidget()
 
+    def move_up(self, modul):
+        if type(modul) is model_Schablone.Schablone:
+            md: model_Schablone.Schablone = modul
+            liste = self.parents[id(md)]
+            oldindex = liste.index(md)
+            if oldindex > 0:
+                liste.insert(oldindex-1, liste.pop(oldindex))
+
+        if type(modul) is model_Prozess.Prozess:
+            md: model_Prozess.Prozess = modul
+            liste = self.parents[id(md)]
+            oldindex = liste.index(md)
+            if oldindex > 0:
+                liste.insert(oldindex-1, liste.pop(oldindex))
+
+        if type(modul) is model_Arbeitsschritt.Arbeitsschritt:
+            md: model_Arbeitsschritt.Arbeitsschritt = modul
+            liste = self.parents[id(md)]
+            oldindex = liste.index(md)
+            if oldindex > 0:
+                liste.insert(oldindex-1, liste.pop(oldindex))
+
+        self.update_TreeWidget()
+
+    def move_down(self, modul):
+        if type(modul) is model_Schablone.Schablone:
+            md: model_Schablone.Schablone = modul
+            liste = self.parents[id(md)]
+            oldindex = liste.index(md)
+            if oldindex < len(liste):
+                liste.insert(oldindex+1, liste.pop(oldindex))
+
+        if type(modul) is model_Prozess.Prozess:
+            md: model_Prozess.Prozess = modul
+            liste = self.parents[id(md)]
+            oldindex = liste.index(md)
+            if oldindex < len(liste):
+                liste.insert(oldindex+1, liste.pop(oldindex))
+
+        if type(modul) is model_Arbeitsschritt.Arbeitsschritt:
+            md: model_Arbeitsschritt.Arbeitsschritt = modul
+            liste = self.parents[id(md)]
+            oldindex = liste.index(md)
+            if oldindex < len(liste):
+                liste.insert(oldindex+1, liste.pop(oldindex))
+
+        self.update_TreeWidget()
+
+
     def openMenu_treeItem(self, event: QtCore.QPoint):
         menu = QtWidgets.QMenu()
         edit = menu.addAction("edit")
         add = menu.addAction("add")
         delete = menu.addAction("delete")
+        move_up = menu.addAction("move up")
+        move_down = menu.addAction("move down")
         action = menu.exec_(self.ui.treeWidget_Produktion.mapToGlobal(event))
 
         if action == edit:
@@ -218,6 +282,18 @@ class gui_MainWindow_PlotterWizard():
             else:
                 self.delete_modul(self.ui.treeWidget_Produktion.currentItem().modul)
 
+        if action == move_up:
+            if self.ui.treeWidget_Produktion.currentItem() is None:
+                pass
+            else:
+                self.move_up(self.ui.treeWidget_Produktion.currentItem().modul)
+
+        if action == move_down:
+            if self.ui.treeWidget_Produktion.currentItem() is None:
+                pass
+            else:
+                self.move_down(self.ui.treeWidget_Produktion.currentItem().modul)
+
     def openMenu_treeHead(self, event: QtCore.QPoint):
         menu = QtWidgets.QMenu()
         add = menu.addAction("add")
@@ -235,6 +311,7 @@ class gui_MainWindow_PlotterWizard():
         if data is not None:
             self.setups.__init__(**data)
         self.update_TreeWidget()
+        self.update_gui()
 
     def actionnew_clicked(self):
         FileHandling.path_of_open_projekt = None
@@ -252,4 +329,5 @@ class gui_MainWindow_PlotterWizard():
         gui.show()
         self.pushButton_Stop()
         self.plotter.reinit_rs232(self.settings)
+        self.update_gui()
 

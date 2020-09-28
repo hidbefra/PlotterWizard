@@ -5,6 +5,8 @@ import concurrent.futures
 import asyncio
 import time
 import model_Settings
+from status_text import status_text
+import PlotterWizard
 from enum import Enum
 
 
@@ -27,7 +29,7 @@ class Plotter:
         # print("X = {}, Y = {}".format(x, y))
         # self.ser.write(b'\x1b.[ZF6;')  # switch offline
         self.ser.close()
-        print("COM prot closed")
+        status_text.add_line_to_status_text("COM prot closed")
 
 
     def init_rs232(self, settings: model_Settings.Settings):
@@ -48,13 +50,14 @@ class Plotter:
 
             self.sio = io.TextIOWrapper(io.BufferedRWPair(self.ser, self.ser))
 
-            print("ser.is_open --> " + str(self.ser.is_open) + " one " + self.ser.name)
+            status_text.add_line_to_status_text("ser.is_open --> " + str(self.ser.is_open) + " one " + self.ser.name)
         except:
-            print("Port " + self.ser.name + " kannn nicht geöfnet werden")
+            status_text.add_line_to_status_text("Port " + self.ser.name + " kannn nicht geöfnet werden")
+
 
     def reinit_rs232(self, settings: model_Settings.Settings):
         self.ser.close()
-        print("COM prot closed")
+        status_text.add_line_to_status_text("COM prot closed")
         time.sleep(1)
         self.init_rs232(settings)
 
@@ -64,13 +67,13 @@ class Plotter:
         self.ser.write(b'OC;')  # position abfragen
         tmp = self.read_rs232()
         x, y = self.read_pos()
-        print("X = {}, Y = {}".format(x, y))
+        status_text.add_line_to_status_text("X = {}, Y = {}".format(x, y))
 
     def kamera_init(self,device_index):
         self.kamera= Kamera.Kamera(device_index)
 
     def read_rs232(self):
-        print("rs232 read")
+        status_text.add_line_to_status_text("rs232 read")
         buffer = ""
         while True:
             oneByte = self.ser.read(1)
@@ -94,7 +97,7 @@ class Plotter:
         command = 'PU' + str(x*100) + ',' + str(y*100) + ';'
         self.ser.write(command.encode())
         x, y = self.read_pos()
-        print("X = {}, Y = {}".format(x, y))
+        status_text.add_line_to_status_text("X = {}, Y = {}".format(x, y))
 
     def move_kamera(self,x ,y):
         self.move(x+self.kamera.offset_x, y+self.kamera.offset_y)
@@ -115,23 +118,14 @@ class Plotter:
         self.hpgl_code = hpgl
 
     def prozess_start(self):
-        # self._prozess_run()
-        # with concurrent.futures.ThreadPoolExecutor() as executor:
-        #     f1 = executor.submit(self._prozess_run)
-
-        # task = asyncio.create_task(self._prozess_run())
-
-        # with concurrent.futures.ProcessPoolExecutor() as executor:
-        #     f1 = executor.submit(_prozess_run)
-        # pass
         if not self.plotter_running:
-            print("starte prozess")
+            status_text.add_line_to_status_text("starte prozess")
             self.plotter_running = True
             thread_pool = concurrent.futures.ThreadPoolExecutor()
             self.thread = thread_pool.submit(self._prozess_run, self.hpgl_code) # start thread
             # self._prozess_run(self.hpgl_code)
         else:
-            print("läuft schon")
+            status_text.add_line_to_status_text("läuft schon")
         pass
 
     def prozess_stop(self):
@@ -142,12 +136,12 @@ class Plotter:
             while(not self.thread.done()):
                 self.ser.cancel_write()
                 self.ser.cancel_read()
-                print("cancel rs232 write")
+                status_text.add_line_to_status_text("cancel rs232 write")
                 time.sleep(1)
-            print("gestopt")
+            status_text.add_line_to_status_text("gestopt")
 
         else:
-            print("läuft gar nicht")
+            status_text.add_line_to_status_text("läuft gar nicht")
         pass
 
     def _prozess_run(self, hpgl_code):
@@ -164,9 +158,8 @@ class Plotter:
                 else:
                     # print(oneByte.decode("ascii"))
                     buffer += oneByte.decode("ascii")
-            # self.read_pos() # scheint die einfachtste Lösung zu sein um herauszufiden ob das Programm durchgelaufen ist
             print(buffer)
-        print("prozess abgebrochen")
+        status_text.add_line_to_status_text("prozess abgebrochen")
         pass
 
 
