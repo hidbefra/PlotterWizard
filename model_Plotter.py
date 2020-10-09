@@ -159,7 +159,7 @@ class Plotter:
                     # print(oneByte.decode("ascii"))
                     buffer += oneByte.decode("ascii")
             print(buffer)
-        status_text.add_line_to_status_text("prozess abgebrochen")
+        print("prozess abgebrochen")
         pass
 
 

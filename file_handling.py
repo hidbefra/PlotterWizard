@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import my_Json
 import os
 import sys
+from status_text import status_text
 
 
 class FileHandling:
@@ -27,21 +28,21 @@ class FileHandling:
             self.safe_projekt_as(data, name)
         else:
             self.save_json_file(data, FileHandling.path_of_open_projekt)
-            print(f"Save Projekt: {name} unter {FileHandling.path_of_open_projekt}")
+            status_text.add_line_to_status_text(f"Save Projekt: {name} unter {FileHandling.path_of_open_projekt}")
 
     def safe_projekt_as(self, data, name):
         path = self.file_picker_save(f"{self.get_last_dir()}\\{name}")
         if path:
             self.save_json_file(data, path)
             FileHandling.path_of_open_projekt = path
-            print(f"Save Projekt: { name } unter {path}")
+            status_text.add_line_to_status_text(f"Save Projekt: { name } unter {path}")
 
     def export_file(self, data, name):
         path = self.file_picker_save(f"{self.get_last_dir()}\\{name}")
         if path:
             self.save_json_file(data, path)
             self.safe_last_dir(path)
-            print(f"export: {path}")
+            status_text.add_line_to_status_text(f"export: {path}")
 
     def save_json_file(self, data, path):
         if path:
@@ -53,9 +54,9 @@ class FileHandling:
             f.write(data)
             f.close()
         except OSError as err:
-            print("OS error: {0}".format(err))
+            status_text.add_line_to_status_text("OS error: {0}".format(err))
         except:
-            print("Unexpected error:", sys.exc_info()[0])
+            status_text.add_line_to_status_text("Unexpected error:", sys.exc_info()[0])
 
     def file_picker_open(self,pfad=None):
         if pfad is None:
@@ -72,7 +73,7 @@ class FileHandling:
         if path:
             data = self.open_json_file(path)
             FileHandling.path_of_open_projekt = path
-            print(f"projekt: {path} geöffnet")
+            status_text.add_line_to_status_text(f"projekt: {path} geöffnet")
         return data
 
     def import_file(self):
@@ -81,7 +82,7 @@ class FileHandling:
         if path:
             data = self.open_json_file(path)
             self.safe_last_dir(path)
-            print(f"import: {path}")
+            status_text.add_line_to_status_text(f"import: {path}")
         return data
 
     def open_json_file(self, pfad):
@@ -97,9 +98,9 @@ class FileHandling:
             data = f.read()
             f.close()
         except OSError as err:
-            print("OS error: {0}".format(err))
+            status_text.add_line_to_status_text("OS error: {0}".format(err))
         except:
-            print("Unexpected error:", sys.exc_info()[0])
+            status_text.add_line_to_status_text("Unexpected error:", sys.exc_info()[0])
 
         return data
 

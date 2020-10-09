@@ -64,7 +64,7 @@ class Setups:
                 insertposition = insertposition + schritt
             schabloneposition +=1
 
-        prozess_list[0][0].offset.add(model_Offset.Offset(1,2,3))
+        #prozess_list[0][0].offset.add(model_Offset.Offset(1,2,3)) was ist das?
         return prozess_list
 
     def encode(self):
@@ -76,6 +76,7 @@ class Setups:
             for arbeitsschritt in arbeitsschritt_list:
                 arbeitsschritt.assign_correction()
                 hpgl_cod = hpgl_cod + arbeitsschritt.hpgl_structure.encode()
+        print(hpgl_cod)
         return hpgl_cod
 
 

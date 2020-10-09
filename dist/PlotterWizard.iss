@@ -18,7 +18,7 @@ DefaultDirName={userappdata}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-OutputDir=C:\Users\franz.hidber\Desktop\KonturGenerator\dist
+OutputDir=C:\Users\franz.hidber\PycharmProjects\PlotterWizard\dist\
 OutputBaseFilename=setup PlotterWizard
 Compression=lzma
 SolidCompression=yes
@@ -31,7 +31,7 @@ Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\franz.hidber\Desktop\KonturGenerator\dist\PlotterWizard.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\franz.hidber\PycharmProjects\PlotterWizard\dist\PlotterWizard.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

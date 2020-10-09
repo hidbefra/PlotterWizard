@@ -197,11 +197,12 @@ class Hpgl_structure:
         coammand: HpglCommand
         for coammand in self.commands:
             if coammand.get_command() in command_list:
-                nx, ny =offset.assign_offset(coammand.get_parameters()[0]/100,
-                                             coammand.get_parameters()[1]/100)
+                nx, ny =offset.assign_offset(coammand.get_parameters()[0],
+                                             coammand.get_parameters()[1])
                 # print(f"{coammand.get_command()} {int(nx*100)}, {int(ny*100)}")
-                coammand.get_parameters()[0] = int(nx*100)
-                coammand.get_parameters()[1] = int(ny*100)
+                #coammand.get_parameters()[0] = int(nx*100) # ich weis nicht wiso das jemals funktioniert haben soll
+                #coammand.get_parameters()[1] = int(ny*100)
+                coammand.set_parameter([nx, ny])
         pass
 
 
