@@ -74,8 +74,9 @@ class Setups:
 
         for arbeitsschritt_list in prozess_list:
             for arbeitsschritt in arbeitsschritt_list:
-                arbeitsschritt.assign_correction()
-                hpgl_cod = hpgl_cod + arbeitsschritt.hpgl_structure.encode()
+                if arbeitsschritt.enabled:
+                    arbeitsschritt.assign_correction()
+                    hpgl_cod = hpgl_cod + arbeitsschritt.hpgl_structure.encode()
         print(hpgl_cod)
         return hpgl_cod
 
