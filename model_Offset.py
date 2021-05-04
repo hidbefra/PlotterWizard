@@ -16,7 +16,7 @@ class Offset:
         self.phi += offset.phi
 
     def assign_offset(self,x,y,phi=0):
-        w = (self.phi+phi)/(2*math.pi)*360
+        w = (self.phi+phi)/360*(2*math.pi)
         rx = round(x * math.cos(w) - y * math.sin(w) + self.dx*100)
         ry = round(x * math.sin(w) + y * math.cos(w) + self.dy*100)
         return rx, ry

@@ -107,7 +107,8 @@ class HpglCommand:
             str_data.insert(0, self._parameters[0])
             self._parameters = str_data
         else:
-            self._parameters = str_data
+            self._parameters[0] = str_data[0] #x und y werte zuweisen
+            self._parameters[1] = str_data[1]
 
 
     def copy_from(self, parameter):
