@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(403, 619)
+        MainWindow.resize(417, 668)
         MainWindow.setBaseSize(QtCore.QSize(0, 0))
         MainWindow.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         icon = QtGui.QIcon()
@@ -24,19 +24,28 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.textEdit_config_Name = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit_config_Name.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        self.spinBox_part_count = QtWidgets.QSpinBox(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.textEdit_config_Name.sizePolicy().hasHeightForWidth())
-        self.textEdit_config_Name.setSizePolicy(sizePolicy)
-        self.textEdit_config_Name.setMaximumSize(QtCore.QSize(16777215, 60))
+        sizePolicy.setHeightForWidth(self.spinBox_part_count.sizePolicy().hasHeightForWidth())
+        self.spinBox_part_count.setSizePolicy(sizePolicy)
+        self.spinBox_part_count.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
-        font.setPointSize(18)
-        self.textEdit_config_Name.setFont(font)
-        self.textEdit_config_Name.setObjectName("textEdit_config_Name")
-        self.verticalLayout.addWidget(self.textEdit_config_Name)
+        font.setPointSize(16)
+        self.spinBox_part_count.setFont(font)
+        self.spinBox_part_count.setAlignment(QtCore.Qt.AlignCenter)
+        self.spinBox_part_count.setMinimum(-9999)
+        self.spinBox_part_count.setMaximum(9999)
+        self.spinBox_part_count.setObjectName("spinBox_part_count")
+        self.verticalLayout.addWidget(self.spinBox_part_count)
         self.treeWidget_Produktion = QtWidgets.QTreeWidget(self.centralwidget)
         self.treeWidget_Produktion.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.treeWidget_Produktion.setMouseTracking(False)
@@ -80,7 +89,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 403, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 417, 21))
         self.menubar.setObjectName("menubar")
         self.menutest = QtWidgets.QMenu(self.menubar)
         self.menutest.setObjectName("menutest")
@@ -132,11 +141,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "PlotterWizard"))
-        self.textEdit_config_Name.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.label.setText(_translate("MainWindow", "Produzierte Teile"))
         self.treeWidget_Produktion.headerItem().setText(0, _translate("MainWindow", "Setups"))
         self.textEdit_Statu_Meldung.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

@@ -6,6 +6,7 @@ import asyncio
 import time
 import model_Settings
 from status_text import status_text
+from part_count import part_count
 import PlotterWizard
 from enum import Enum
 
@@ -158,6 +159,7 @@ class Plotter:
                 else:
                     # print(oneByte.decode("ascii"))
                     buffer += oneByte.decode("ascii")
+            part_count.add_part()
             print(buffer)
         print("prozess abgebrochen")
         pass

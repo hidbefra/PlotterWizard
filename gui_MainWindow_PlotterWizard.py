@@ -23,6 +23,7 @@ from file_handling import FileHandling
 import QT_MainWindow_PlotterWizard as mw
 
 from status_text import status_text
+from part_count import part_count
 
 
 
@@ -32,6 +33,8 @@ class gui_MainWindow_PlotterWizard():
         self.MainWindow = QtWidgets.QMainWindow()
         self.ui = mw.Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
+
+        self.MainWindow.closeEvent = self.closeEvent #wer weis ob das ok ist^^
 
         self.ui.treeWidget_Produktion.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.ui.treeWidget_Produktion.customContextMenuRequested.connect(self.openMenu_treeItem)
@@ -88,6 +91,9 @@ class gui_MainWindow_PlotterWizard():
         #self.status_text = ""
         self.update_gui()
 
+    def __del__(self):
+        print("close")
+
     def conact_Plotter(self):
         self.plotter = model_Plotter.Plotter(self.settings)
 
@@ -98,6 +104,8 @@ class gui_MainWindow_PlotterWizard():
         self.ui.textEdit_Statu_Meldung.setText(status_text.text)
         self.ui.textEdit_Statu_Meldung.moveCursor(QtGui.QTextCursor.End)
 
+    def add_part_count(self):
+        self.ui.spinBox_part_count.setValue(self.ui.spinBox_part_count.value()+1)
 
     def update_TreeWidget(self):
 
@@ -331,3 +339,8 @@ class gui_MainWindow_PlotterWizard():
         self.plotter.reinit_rs232(self.settings)
         self.update_gui()
 
+    def closeEvent(self, event):
+        print("closing")
+        self.pushButton_Stop()
+        event.accept()
+        #self.qt_closeEvent()
