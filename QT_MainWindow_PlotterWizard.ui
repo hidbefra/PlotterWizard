@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>443</width>
-    <height>687</height>
+    <width>412</width>
+    <height>688</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -54,12 +54,12 @@
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>40</height>
+        <height>80</height>
        </size>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>64</pointsize>
        </font>
       </property>
       <property name="alignment">
@@ -220,7 +220,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>443</width>
+     <width>412</width>
      <height>21</height>
     </rect>
    </property>

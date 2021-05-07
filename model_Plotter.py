@@ -23,6 +23,7 @@ class Plotter:
         self.plotter_running = False
         self.plotter_online = False
         self.init_rs232(settings)
+        self.marker = ""
 
 
     def __del__(self):
@@ -146,10 +147,11 @@ class Plotter:
         pass
 
     def _prozess_run(self, hpgl_code):
+        self.marker = "JB" + str(round(time.time())) #marker aus time() um ende des Programs zu markieren
         while (self.plotter_running):
             self.write_rs232(hpgl_code)
-
-            self.ser.write(b'JB1337;') # use Job Echo um ende des Programs zu markieren
+            #self.ser.write(b'JB1337;') # use Job Echo um ende des Programs zu markieren
+            self.write_rs232((self.marker+";"))
 
             buffer = "" # auf antwort vom Plotter warten
             while (self.plotter_running):
@@ -157,14 +159,14 @@ class Plotter:
                 if oneByte == b"\r":  # method should returns bytes
                     if buffer == "JB1":
                         part_count.add_part()
-                    if buffer == "JB1337":
+                    if buffer == self.marker:
                         buffer = ""
                         break
                     buffer = ""
                 else:
                     # print(oneByte.decode("ascii"))
                     buffer += oneByte.decode("ascii")
-                    print(buffer)
+                    #print(buffer)
 
         print("prozess abgebrochen")
         pass
