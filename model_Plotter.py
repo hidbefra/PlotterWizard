@@ -155,12 +155,17 @@ class Plotter:
             while (self.plotter_running):
                 oneByte = self.ser.read(1)
                 if oneByte == b"\r":  # method should returns bytes
-                    break
+                    if buffer == "JB1":
+                        part_count.add_part()
+                    if buffer == "JB1337":
+                        buffer = ""
+                        break
+                    buffer = ""
                 else:
                     # print(oneByte.decode("ascii"))
                     buffer += oneByte.decode("ascii")
-            part_count.add_part()
-            print(buffer)
+                    print(buffer)
+
         print("prozess abgebrochen")
         pass
 
