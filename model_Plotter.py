@@ -147,7 +147,7 @@ class Plotter:
         pass
 
     def _prozess_run(self, hpgl_code):
-        self.marker = "JB" + str(round(time.time())) #marker aus time() um ende des Programs zu markieren
+        self.marker = "JB" + str(round(time.time()))[-6:] #marker aus time() um ende des Programs zu markieren
         while (self.plotter_running):
             self.write_rs232(hpgl_code)
             #self.ser.write(b'JB1337;') # use Job Echo um ende des Programs zu markieren
