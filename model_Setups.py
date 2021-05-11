@@ -3,7 +3,7 @@ from typing import List
 import model_Offset
 import my_QTreeWidgetItem
 import model_Prozess
-import  model_Arbeitsschritt
+import model_Arbeitsschritt
 import copy
 
 
@@ -77,7 +77,7 @@ class Setups:
                 if arbeitsschritt.enabled:
                     arbeitsschritt.assign_correction()
                     hpgl_cod = hpgl_cod + arbeitsschritt.hpgl_structure.encode()
-        print(hpgl_cod)
+        #print(hpgl_cod)
         return hpgl_cod
 
 

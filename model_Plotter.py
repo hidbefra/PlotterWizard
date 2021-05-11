@@ -85,8 +85,14 @@ class Plotter:
                 # print(oneByte.decode("ascii"))
                 buffer += oneByte.decode("ascii")
 
-    def write_rs232(self,data):
-        self.ser.write(data.encode())
+    def write_rs232(self, data):
+        print(data)
+        try:
+            self.ser.write(data.encode())
+        except Exception as e:
+            print(e)
+            #status_text.add_line_to_status_text("fehler senden RS232") funktioniert nicht in thred
+            #status_text.add_line_to_status_text(e.message)
 
     def read_pos(self):
         self.ser.write(b'OC;')  # position abfragen
@@ -131,7 +137,6 @@ class Plotter:
         pass
 
     def prozess_stop(self):
-
         if self.plotter_running:
             self.plotter_running = False
             time.sleep(1)
