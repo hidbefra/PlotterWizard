@@ -1,6 +1,6 @@
 {
     "com_port": {
-        "RS232port": "COM3",
+        "RS232port": "COM2",
         "baudrate": 19200,
         "parity": "N",
         "stopbits": 1,

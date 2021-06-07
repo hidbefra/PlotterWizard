@@ -86,7 +86,7 @@ class Plotter:
                 buffer += oneByte.decode("ascii")
 
     def write_rs232(self, data):
-        print(data)
+        print("write_rs232 " + data)
         try:
             self.ser.write(data.encode())
         except Exception as e:
@@ -152,7 +152,7 @@ class Plotter:
         pass
 
     def _prozess_run(self, hpgl_code):
-        self.marker = "JB" + str(round(time.time()))[-6:] #marker aus time() um ende des Programs zu markieren
+        self.marker = "JB1" + str(round(time.time()))[-5:] #marker aus time() um ende des Programs zu markieren Plotter senden bei PB0100 PB100 zurück
         while (self.plotter_running):
             self.write_rs232(hpgl_code)
             #self.ser.write(b'JB1337;') # use Job Echo um ende des Programs zu markieren
@@ -162,6 +162,7 @@ class Plotter:
             while (self.plotter_running):
                 oneByte = self.ser.read(1)
                 if oneByte == b"\r":  # method should returns bytes
+                    print("_prozess_run.buffer "+buffer)
                     if buffer == "JB1":
                         part_count.add_part()
                     if buffer == self.marker:
