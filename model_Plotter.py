@@ -31,7 +31,7 @@ class Plotter:
         # print("X = {}, Y = {}".format(x, y))
         # self.ser.write(b'\x1b.[ZF6;')  # switch offline
         self.ser.close()
-        status_text.add_line_to_status_text("COM prot closed")
+        status_text.add_line_to_status_text("COM port closed")
 
 
     def init_rs232(self, settings: model_Settings.Settings):
@@ -54,12 +54,12 @@ class Plotter:
 
             status_text.add_line_to_status_text("ser.is_open --> " + str(self.ser.is_open) + " one " + self.ser.name)
         except:
-            status_text.add_line_to_status_text("Port " + self.ser.name + " kannn nicht geöfnet werden")
+            status_text.add_line_to_status_text("Port " + self.ser.name + " can not be opened")
 
 
     def reinit_rs232(self, settings: model_Settings.Settings):
         self.ser.close()
-        status_text.add_line_to_status_text("COM prot closed")
+        status_text.add_line_to_status_text("COM port closed")
         time.sleep(1)
         self.init_rs232(settings)
 
@@ -127,13 +127,13 @@ class Plotter:
 
     def prozess_start(self):
         if not self.plotter_running:
-            status_text.add_line_to_status_text("starte prozess")
+            status_text.add_line_to_status_text("start process")
             self.plotter_running = True
             thread_pool = concurrent.futures.ThreadPoolExecutor()
             self.thread = thread_pool.submit(self._prozess_run, self.hpgl_code) # start thread
             # self._prozess_run(self.hpgl_code)
         else:
-            status_text.add_line_to_status_text("läuft schon")
+            status_text.add_line_to_status_text("already running")
         pass
 
     def prozess_stop(self):
@@ -145,10 +145,10 @@ class Plotter:
                 self.ser.cancel_read()
                 status_text.add_line_to_status_text("cancel rs232 write")
                 time.sleep(1)
-            status_text.add_line_to_status_text("gestopt")
+            status_text.add_line_to_status_text("stopped")
 
         else:
-            status_text.add_line_to_status_text("läuft gar nicht")
+            status_text.add_line_to_status_text("already stopped")
         pass
 
     def _prozess_run(self, hpgl_code):
@@ -174,7 +174,7 @@ class Plotter:
                     buffer += oneByte.decode("ascii")
                     #print(buffer)
 
-        print("prozess abgebrochen")
+        print("process aborted")
         pass
 
 

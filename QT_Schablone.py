@@ -93,9 +93,9 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Schablone"))
-        self.label.setText(_translate("Dialog", "Bezeichung"))
+        self.label.setText(_translate("Dialog", "Description"))
         self.label_7.setText(_translate("Dialog", "Rotation [°]"))
-        self.pushButton_Geometrie_anpassen.setText(_translate("Dialog", "Geometrie anpassen"))
+        self.pushButton_Geometrie_anpassen.setText(_translate("Dialog", "adjust geometry"))
         self.label_6.setText(_translate("Dialog", "Offset X [mm]"))
         self.label_5.setText(_translate("Dialog", "Offset Y [mm]"))
         self.pushButton_Laden.setText(_translate("Dialog", "importieren"))

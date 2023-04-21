@@ -90,7 +90,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Setups"))
-        self.label_2.setText(_translate("Dialog", "Bezeichnung"))
+        self.label_2.setText(_translate("Dialog", "Description"))
         self.label_3.setText(_translate("Dialog", "Offset X [mm]"))
         self.label_6.setText(_translate("Dialog", "Rotation [°]"))
         self.label_4.setText(_translate("Dialog", "Offset Y [mm]"))

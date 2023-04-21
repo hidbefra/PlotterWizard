@@ -141,7 +141,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "PlotterWizard"))
-        self.label.setText(_translate("MainWindow", "Produzierte Teile"))
+        self.label.setText(_translate("MainWindow", "Parts counter"))
         self.treeWidget_Produktion.headerItem().setText(0, _translate("MainWindow", "Setups"))
         self.textEdit_Statu_Meldung.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -151,7 +151,7 @@ class Ui_MainWindow(object):
         self.pushButton_Start.setText(_translate("MainWindow", "Start"))
         self.pushButton_Stop.setText(_translate("MainWindow", "Stop"))
         self.menutest.setTitle(_translate("MainWindow", "Setup"))
-        self.menuDatei.setTitle(_translate("MainWindow", "Datei"))
+        self.menuDatei.setTitle(_translate("MainWindow", "File"))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
         self.actionnew.setText(_translate("MainWindow", "new"))
         self.actionsave.setText(_translate("MainWindow", "save"))

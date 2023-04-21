@@ -36,7 +36,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Produzierte Teile</string>
+       <string>Parts counter</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -232,7 +232,7 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QMenu" name="menuDatei">
     <property name="title">
-     <string>Datei</string>
+     <string>File</string>
     </property>
     <addaction name="actionopen"/>
     <addaction name="actionnew"/>

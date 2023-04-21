@@ -173,14 +173,14 @@
      <item row="11" column="0" colspan="2">
       <widget class="QLabel" name="label_11">
        <property name="text">
-        <string>XX13,3 Z Achse bei PD</string>
+        <string>XX13,3 Z axis on PD</string>
        </property>
       </widget>
      </item>
      <item row="11" column="2">
       <widget class="QLabel" name="label_12">
        <property name="text">
-        <string>Wartezeit Z Achse [1/100 s]</string>
+        <string>delay after Z Achse [1/100 s]</string>
        </property>
       </widget>
      </item>
@@ -207,7 +207,7 @@
      <item row="13" column="0" colspan="2">
       <widget class="QCheckBox" name="checkBox_Z_Achse_hoch_bei_PU">
        <property name="text">
-        <string>Z Achse bei PU immer hochfahren</string>
+        <string>Z axis on PU always high</string>
        </property>
       </widget>
      </item>
@@ -244,7 +244,7 @@
      <item row="15" column="0" colspan="2">
       <widget class="QLabel" name="label_13">
        <property name="text">
-        <string>Einschaltdauer Vacuum [1/100 s]</string>
+        <string>ramp-up time Vacuum [1/100 s]</string>
        </property>
       </widget>
      </item>
@@ -277,7 +277,7 @@
      <item row="0" column="0" colspan="3">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Bezeichnung</string>
+        <string>Description</string>
        </property>
       </widget>
      </item>

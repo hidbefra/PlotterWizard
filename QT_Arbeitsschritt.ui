@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Bezeichnung</string>
+      <string>Description</string>
      </property>
     </widget>
    </item>
@@ -45,7 +45,7 @@
      <item row="4" column="2">
       <widget class="QCheckBox" name="checkBox_extract_parameter">
        <property name="text">
-        <string>aus Geometrie übernehmen</string>
+        <string>use from geometry</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -68,14 +68,14 @@
      <item row="1" column="3">
       <widget class="QPushButton" name="pushButton_Geometrie_Importieren">
        <property name="text">
-        <string>Datei wählen</string>
+        <string>Choose file</string>
        </property>
       </widget>
      </item>
      <item row="4" column="0" colspan="2">
       <widget class="QPushButton" name="pushButton_Schnittparameter">
        <property name="text">
-        <string>Schnittparameter</string>
+        <string>cutting parameters</string>
        </property>
       </widget>
      </item>
@@ -95,14 +95,14 @@
      <item row="2" column="3">
       <widget class="QPushButton" name="pushButton_Geometrie_anpassen">
        <property name="text">
-        <string>Geometrie anpassen</string>
+        <string>adjust geometry</string>
        </property>
       </widget>
      </item>
      <item row="0" column="0" colspan="2">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Geometrie</string>
+        <string>Geometry</string>
        </property>
       </widget>
      </item>

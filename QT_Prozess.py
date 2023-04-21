@@ -42,6 +42,7 @@ class Ui_Dialog(object):
         self.label_6.setObjectName("label_6")
         self.gridLayout.addWidget(self.label_6, 2, 0, 1, 1)
         self.pushButton_Geometrie_anpassen = QtWidgets.QPushButton(Dialog)
+        self.pushButton_Geometrie_anpassen.setText("adjust geometry")
         self.pushButton_Geometrie_anpassen.setObjectName("pushButton_Geometrie_anpassen")
         self.gridLayout.addWidget(self.pushButton_Geometrie_anpassen, 3, 0, 1, 2)
         self.doubleSpinBox_offset_x = QtWidgets.QDoubleSpinBox(Dialog)
@@ -93,11 +94,10 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Prozuess"))
-        self.label_2.setText(_translate("Dialog", "Bezeichnung"))
+        self.label_2.setText(_translate("Dialog", "Description"))
         self.label_3.setText(_translate("Dialog", "Offset X [mm]"))
         self.label_4.setText(_translate("Dialog", "Offset Y [mm]"))
         self.label_6.setText(_translate("Dialog", "Rotation [°]"))
-        self.pushButton_Geometrie_anpassen.setText(_translate("Dialog", "Geometrie anpassen"))
         self.pushButton_Laden.setText(_translate("Dialog", "importieren"))
         self.pushButton_exportieren.setText(_translate("Dialog", "exportieren"))
 

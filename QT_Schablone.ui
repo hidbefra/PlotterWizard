@@ -23,7 +23,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Bezeichung</string>
+      <string>Description</string>
      </property>
     </widget>
    </item>
@@ -58,7 +58,7 @@
      <item row="3" column="0" colspan="2">
       <widget class="QPushButton" name="pushButton_Geometrie_anpassen">
        <property name="text">
-        <string>Geometrie anpassen</string>
+        <string>adjust geometry</string>
        </property>
       </widget>
      </item>
